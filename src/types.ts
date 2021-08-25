@@ -45,3 +45,7 @@ export interface RoundDetailsProps {
     round: RoundContainer
     index: number
 }
+
+export interface RoundsForSeasonProps {
+    selectedSeason: string
+}

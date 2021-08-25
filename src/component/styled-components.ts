@@ -188,6 +188,30 @@ export const StyledButton = styled.button`
   }
 `
 
+export const PrevNextButton = styled.button`
+  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  width: 150px;
+  height: 3rem;
+  border: none;
+  color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+  &:disabled {
+    filter: brightness(0.5);
+    &:hover {
+      filter: brightness(0.5);
+    }
+  }
+  &:active {
+    transform: translateY(4px);
+  }
+  &:hover {
+    filter: brightness(1.5);
+  }
+`
+
 export type StyledIconProps = {
   background: string,
 }
@@ -251,6 +275,6 @@ export const TwitterBackground =
 
 export const Header = styled.h1`
 color: white;
-padding-left: 100px;
-padding-top: 30px;
+padding-left: 10px;
+padding-right: 10px;
 `

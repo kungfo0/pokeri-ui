@@ -19,12 +19,13 @@ function LoginForm({setApiKey}: LoginFormProps) {
     setErrorMessage('')
     try {
       const response = await login(username, password)
+      setLoading(false)
       setApiKey(response['api-key'])
     }
     catch(e) {
       setErrorMessage('Invalid credentials')
+      setLoading(false)
     }
-    setLoading(false)
   }
   const usernameInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const enteredName = event.target.value
