@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getRoundsForSeason } from '../http'
 import { RoundContainer, RoundsForSeasonProps, NameValue } from '../types'
 import Rounds from './Rounds'
-import { Header, Spinner } from './styled-components'
+import { Spinner, Content, SmallButton } from './styled-components'
 import Totals from './Totals'
 
 function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
@@ -11,6 +11,7 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
     const [eliminations, setEliminations] = useState<NameValue[]>([])
     const [gamesPlayed, setGamesPlayed] = useState<NameValue[]>([])
     const [totalPoints, setTotalPoints] = useState<NameValue[]>([])
+    const [showRounds, setShowRounds] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -27,7 +28,11 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
     <div>
       { rounds.length === 0
         ? <div><Spinner/></div>
-        : <div><Rounds roundsForSeason={rounds}/><Totals eliminations={eliminations} gamesPlayed={gamesPlayed} totalPoints={totalPoints}/><div/>
+        : <div>
+            <SmallButton onClick={() => setShowRounds(!showRounds)}>Rounds</SmallButton>
+            <Content open={showRounds}><Rounds roundsForSeason={rounds}/></Content>
+            <Totals eliminations={eliminations} gamesPlayed={gamesPlayed} totalPoints={totalPoints}/>
+          <div/>
         </div>
       }
     </div>

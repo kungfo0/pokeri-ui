@@ -1,3 +1,4 @@
+import Collapsible from 'react-collapsible'
 import styled, { keyframes } from 'styled-components'
 
 export const CenteredContainer = styled.div`
@@ -188,7 +189,7 @@ export const StyledButton = styled.button`
   }
 `
 
-export const PrevNextButton = styled.button`
+export const SmallButton = styled.button`
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;
   margin-left: 20px;
@@ -275,4 +276,22 @@ export const TwitterBackground =
 
 export const Header = styled.h1`
 color: white;
+`
+
+interface ContentProps {
+  open: boolean
+}
+
+export const Content = styled.div`
+border: 1px solid gray;
+border-top: none;
+opacity: ${(props: ContentProps) => (props.open ? '1' : '0')};
+max-height: ${props => (props.open ? '100%' : '0')};
+overflow: hidden;
+padding: ${props => (props.open ? '15px' : '0 15px')};
+transition: all 0.3s;
+
+p {
+  margin: 0;
+}
 `

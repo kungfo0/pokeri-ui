@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getSeasons } from '../http'
 import RoundsForSeason from './RoundsForSeason'
 
-import { FlexBox, Header, PrevNextButton, Spinner, StyledButton } from './styled-components'
+import { FlexBox, Header, SmallButton, Spinner, StyledButton } from './styled-components'
 
 function Seasons() {
     const [selected, setSelected] = useState('')
@@ -46,9 +46,9 @@ const setNext = () => {
         { seasons.length === 0
         ? <div><Spinner/></div>
         : <FlexBox>
-            <PrevNextButton onClick={setPrevious} disabled={!hasPrevious}>Previous</PrevNextButton>
+            <SmallButton onClick={setPrevious} disabled={!hasPrevious}>Previous</SmallButton>
             <Header>{selected}</Header>
-            <PrevNextButton onClick={setNext} disabled={!hasNext}>Next</PrevNextButton>
+            <SmallButton onClick={setNext} disabled={!hasNext}>Next</SmallButton>
             <RoundsForSeason selectedSeason={selected}/>
           </FlexBox>
       }
