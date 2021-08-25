@@ -191,9 +191,9 @@ export const StyledButton = styled.button`
 export const PrevNextButton = styled.button`
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  width: 150px;
-  height: 3rem;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 100px;
   border: none;
   color: white;
   border-radius: 2rem;
@@ -275,6 +275,4 @@ export const TwitterBackground =
 
 export const Header = styled.h1`
 color: white;
-padding-left: 10px;
-padding-right: 10px;
 `
