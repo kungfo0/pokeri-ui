@@ -1,4 +1,3 @@
-import Collapsible from 'react-collapsible'
 import styled, { keyframes } from 'styled-components'
 
 export const CenteredContainer = styled.div`

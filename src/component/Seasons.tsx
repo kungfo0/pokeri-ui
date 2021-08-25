@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getSeasons } from '../http'
 import RoundsForSeason from './RoundsForSeason'
 
-import { FlexBox, Header, SmallButton, Spinner, StyledButton } from './styled-components'
+import { FlexBox, Header, SmallButton, Spinner } from './styled-components'
 
 function Seasons() {
     const [selected, setSelected] = useState('')

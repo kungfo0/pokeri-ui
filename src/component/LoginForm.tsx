@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import Button from './Button'
-import Icon from './Icon'
 import Input from './Input'
-import { ErrorMessage, LoginFormContainer, WelcomeText, InputContainer, ButtonContainer, HorizontalRule, IconsContainer, LoginWith, ForgotPassword } from './styled-components'
-import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { ErrorMessage, LoginFormContainer, WelcomeText, InputContainer, ButtonContainer, HorizontalRule } from './styled-components'
 import { login } from '../http'
 import { LoginFormProps } from '../types'
 
