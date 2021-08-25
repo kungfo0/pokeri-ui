@@ -10,7 +10,7 @@ function Totals({eliminations, gamesPlayed, totalPoints}: TotalsProps) {
                 <tr><th>Player</th><th>Amount</th></tr>
                 </thead>
             <tbody>
-                {eliminations.map(function(it, index){
+                {gamesPlayed.map(function(it, index){
                     return <tr key={index}><td>{it.name}</td><td>{it.value}</td></tr>
                 })}
             </tbody>
@@ -32,7 +32,7 @@ function Totals({eliminations, gamesPlayed, totalPoints}: TotalsProps) {
                 <tr><th>Player</th><th>Amount</th></tr>
                 </thead>
             <tbody>
-                {gamesPlayed.map(function(it, index){
+                {eliminations.map(function(it, index){
                     return <tr key={index}><td>{it.name}</td><td>{it.value}</td></tr>
                 })}
             </tbody>
