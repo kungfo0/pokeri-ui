@@ -235,7 +235,7 @@ svg {
 export const StyledTable = styled.table`
 border-spacing: 0px;
 background: rgba(255, 255, 255, 0.85);
-width: 500px;
+width: 450px;
 margin: 20px;
 border: 1px solid black;
 th, td {

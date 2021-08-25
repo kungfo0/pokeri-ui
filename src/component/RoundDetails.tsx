@@ -6,7 +6,7 @@ function RoundDetails({round, index}: RoundDetailsProps) {
     <StyledTable>
         <thead>
             <tr><th colSpan={4}>Round {index}</th></tr>
-            <tr><th>Rank</th><th>Player</th><th>Eliminator</th><th>Extra Points</th></tr>
+            <tr><th>Rank</th><th>Player</th><th>Eliminator</th><th>Extra<br/>Points</th></tr>
             </thead>
         <tbody>
     {round.finishedPositions.map(function(it, index){
