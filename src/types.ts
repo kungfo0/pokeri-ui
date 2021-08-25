@@ -49,3 +49,14 @@ export interface RoundDetailsProps {
 export interface RoundsForSeasonProps {
     selectedSeason: string
 }
+
+export interface TotalsProps {
+    eliminations: NameValue[],
+    gamesPlayed: NameValue[],
+    totalPoints: NameValue[],
+}
+
+export interface NameValue {
+    name: string,
+    value: string
+}
