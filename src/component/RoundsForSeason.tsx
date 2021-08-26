@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { getRoundsForSeason } from '../http'
-import { RoundContainer, RoundsForSeasonProps, NameValue } from '../types'
+import { RoundContainer, RoundsForSeasonProps, NameValue, RoundsForSeasonResponse, PromiseWithCancel } from '../types'
 import Rounds from './Rounds'
 import { Spinner, Content, SmallButton } from './styled-components'
 import Totals from './Totals'
@@ -12,17 +12,21 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
     const [gamesPlayed, setGamesPlayed] = useState<NameValue[]>([])
     const [totalPoints, setTotalPoints] = useState<NameValue[]>([])
     const [showRounds, setShowRounds] = useState(false)
+    let query = useRef<PromiseWithCancel<RoundsForSeasonResponse> | undefined>(undefined);
 
     useEffect(() => {
-        (async () => {
-            const resp = await getRoundsForSeason(selectedSeason)
-            setRounds(resp.rounds)
-            setSeason(resp.season)
-            setEliminations(resp.totals.eliminations)
-            setGamesPlayed(resp.totals.gamesPlayed)
-            setTotalPoints(resp.totals.totalPoints)
-        })()
-      }, [setRounds, setSeason, selectedSeason])
+      query.current?.cancel()
+      setRounds([])
+      const q = getRoundsForSeason(selectedSeason)
+      query.current = q
+      q.then((resp) => {
+        setRounds(resp.rounds)
+        setSeason(resp.season)
+        setEliminations(resp.totals.eliminations)
+        setGamesPlayed(resp.totals.gamesPlayed)
+        setTotalPoints(resp.totals.totalPoints)
+      })
+      }, [ selectedSeason ])
 
   return (
     <div>

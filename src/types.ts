@@ -60,3 +60,13 @@ export interface NameValue {
     name: string,
     value: string
 }
+
+export interface PromiseWithCancel<T> extends Promise<T> {
+    cancel: () => void;
+  }
+
+export interface RoundsForSeasonResponse {
+    rounds: RoundContainer[],
+    season: {name: string},
+    totals: TotalsProps,
+  }
