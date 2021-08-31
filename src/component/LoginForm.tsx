@@ -5,7 +5,7 @@ import { ErrorMessage, LoginFormContainer, WelcomeText, InputContainer, ButtonCo
 import { login } from '../http'
 import { LoginFormProps } from '../types'
 
-function LoginForm({setApiKey}: LoginFormProps) {
+function LoginForm({ setApiKey }: LoginFormProps) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -18,8 +18,7 @@ function LoginForm({setApiKey}: LoginFormProps) {
       const response = await login(username, password)
       setLoading(false)
       setApiKey(response['api-key'])
-    }
-    catch(e) {
+    } catch (e) {
       setErrorMessage('Invalid credentials')
       setLoading(false)
     }
@@ -36,16 +35,16 @@ function LoginForm({setApiKey}: LoginFormProps) {
     <LoginFormContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
-        <Input type="text" placeholder="Username" value={username} onChange={usernameInputHandler}/>
-        <Input type="password" placeholder="Password" value={password} onChange={passwordInputHandler}/>
+        <Input type="text" placeholder="Username" value={username} onChange={usernameInputHandler} />
+        <Input type="password" placeholder="Password" value={password} onChange={passwordInputHandler} />
       </InputContainer>
       <ErrorMessage>{errorMessage}</ErrorMessage>
       <ButtonContainer>
-        <Button content="Log in" onClick={clickMe} loading={loading}/>
+        <Button content="Log in" onClick={clickMe} loading={loading} />
       </ButtonContainer>
       {/* <LoginWith>OR LOGIN WITH</LoginWith> */}
       <HorizontalRule />
-{/*       <IconsContainer>
+      {/*       <IconsContainer>
         <Icon color={FacebookBackground}>
           <FaFacebookF />
         </Icon>

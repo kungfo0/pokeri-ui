@@ -1,39 +1,65 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { Select } from 'react-functional-select'
-import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel } from '../types'
-import { IdName } from './AddRound'
+import React from 'react'
 import { SelectContainer } from './styled-components'
+import { Multiselect } from 'multiselect-react-dropdown'
+
+export interface PositionName {
+  position: number
+  name: string
+}
 
 type PlayerSelectProps = Readonly<{
-  values: IdName[] | undefined;
-  onOptionChange: ((data: IdName) => any)
-}>;
+  values: PositionName[]
+  extraPoints: PositionName[]
+  selectionLimit: number
+  index: number
+  onSelect: (selectedList: PositionName[], selected: PositionName) => any
+  onRemove: (removedList: PositionName[], removed: PositionName) => any
+  onBountySelect: (selectedList: PositionName[], selected: PositionName) => any
+  onBountyRemove: (selectedList: PositionName[], selected: PositionName) => any
+}>
 
-function PlayerSelect({ values, onOptionChange }: PlayerSelectProps) {
-  const [isInvalid, setIsInvalid] = useState<boolean>(false)
-  const [selectedOption, setSelectedOption] = useState<string | null>(null)
-  let query = useRef<PromiseWithCancel<AutoComplateValuesRoundsForSeasonResponse> | undefined>(undefined)
-
-  const getOptionValue = useCallback((option: IdName): string => option.name, [])
- // const onOptionChange = useCallback((option: string): void => setSelected(option), [])
-  const getOptionLabel = useCallback((option: IdName): string => option.name, [])
-
-  useEffect(() => {
-    setIsInvalid(false)
-    }, [  ])
-
-return (
-  <SelectContainer>
-    <Select
-      isLoading = {!values}
-      isClearable = {false}
-      isInvalid={isInvalid}
-      options={values || []}
-      onOptionChange={onOptionChange}
-      getOptionValue={getOptionValue}
-      getOptionLabel={getOptionLabel}
-    />
-  </SelectContainer>
-)}
+function PlayerSelect({ values, extraPoints, selectionLimit, index, onSelect, onRemove, onBountySelect, onBountyRemove }: PlayerSelectProps) {
+  return (
+    <SelectContainer>
+      <p>{index}.</p>
+      <Multiselect
+        key={index}
+        id={`finishedposition-${index}`}
+        displayValue="name"
+        isObject={true}
+        onRemove={onRemove}
+        onSearch={function noRefCheck() {}}
+        onSelect={onSelect}
+        options={values}
+        selectedValues={[]}
+        placeholder={index === 1 ? 'Eliminated' : 'Eliminated / Eliminator'}
+        selectionLimit={selectionLimit}
+        style={{
+          multiselectContainer: {
+            width: '70%',
+          },
+        }}
+      />
+      <Multiselect
+        key={`extraPoints-${index}`}
+        id={`extraPoints-${index}`}
+        displayValue="name"
+        isObject={true}
+        onSearch={function noRefCheck() {}}
+        onSelect={onBountySelect}
+        onRemove={onBountyRemove}
+        options={extraPoints}
+        selectedValues={[]}
+        selectionLimit={1}
+        placeholder={'Bounty'}
+        style={{
+          multiselectContainer: {
+            width: '130px',
+          },
+        }}
+      />
+    </SelectContainer>
+  )
+}
 
 export default PlayerSelect

@@ -1,16 +1,16 @@
 import styled, { css, keyframes } from 'styled-components'
 
 export const CenteredContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 `
 export const RightSideContainer = styled.div`
-display: flex;
-justify-content: flex-end;
-align-items: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;
 `
 export const LogOutButtonContainer = styled.div`
   margin: 1rem 0 2rem 0;
@@ -150,14 +150,14 @@ const rotate360 = keyframes`
 `
 
 export const ErrorMessage = styled.div`
-color: #D8000C;
-height: 24px;
+  color: #d8000c;
+  height: 24px;
 `
 
 export const Spinner = styled.div`
   animation: ${rotate360} 1s linear infinite;
   transform: translateZ(0);
-  
+
   border-top: 2px solid grey;
   border-right: 2px solid grey;
   border-bottom: 2px solid grey;
@@ -191,9 +191,9 @@ export const StyledButton = styled.button`
 export const SmallButton = styled.button`
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 20px;
   width: 100px;
+  height: 25px;
   border: none;
   color: white;
   border-radius: 2rem;
@@ -213,68 +213,66 @@ export const SmallButton = styled.button`
 `
 
 export type StyledIconProps = {
-  background: string,
+  background: string
 }
 
 export const StyledIcon = styled.div`
-height: 3.5rem;
-width: 3.5rem;
-background: ${(p: StyledIconProps) => p.background};
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 4rem;
-color: white;
-cursor: pointer;
-svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
+  height: 3.5rem;
+  width: 3.5rem;
+  background: ${(p: StyledIconProps) => p.background};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
+  color: white;
+  cursor: pointer;
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `
 
 export const StyledTable = styled.table`
-border-spacing: 0px;
-background: rgba(255, 255, 255, 0.85);
-width: 450px;
-margin: 20px;
-border: 1px solid black;
-th, td {
+  border-spacing: 0px;
+  background: rgba(255, 255, 255, 0.85);
+  width: 450px;
+  margin: 20px;
   border: 1px solid black;
-  padding: 3px;
-}
-th:first-child {
-  text-align: center;
-}
-th {
-  text-align: left;
-}
-td:first-child  {
-  text-align: center;
-}
-tr {
-  text-align: left;
-}
+  th,
+  td {
+    border: 1px solid black;
+    padding: 3px;
+  }
+  th:first-child {
+    text-align: center;
+  }
+  th {
+    text-align: left;
+  }
+  td:first-child {
+    text-align: center;
+  }
+  tr {
+    text-align: left;
+  }
 `
 
 export const FlexBox = styled.div`
-display: flex;
-flex-direction: row;
-max-width: 100%;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  flex-wrap: wrap;
 `
 export const AppWrapper = styled.div`
   margin: 20px;
 `
 
-export const FacebookBackground =
-'linear-gradient(to right, #0546A0 0%, #0546A0 40%, #663FB6 100%)'
-export const InstagramBackground =
-'linear-gradient(to right, #A12AC4 0%, #ED586C 40%, #F0A853 100%)'
-export const TwitterBackground =
-'linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)'
+export const FacebookBackground = 'linear-gradient(to right, #0546A0 0%, #0546A0 40%, #663FB6 100%)'
+export const InstagramBackground = 'linear-gradient(to right, #A12AC4 0%, #ED586C 40%, #F0A853 100%)'
+export const TwitterBackground = 'linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)'
 
 export const Header = styled.h1`
-color: white;
+  color: white;
 `
 
 interface ContentProps {
@@ -282,17 +280,17 @@ interface ContentProps {
 }
 
 export const Content = styled.div`
-border: 1px solid gray;
-border-top: none;
-opacity: ${(props: ContentProps) => (props.open ? '1' : '0')};
-max-height: ${props => (props.open ? '100%' : '0')};
-overflow: hidden;
-padding: ${props => (props.open ? '15px' : '0 15px')};
-transition: all 0.3s;
+  border: 1px solid gray;
+  border-top: none;
+  opacity: ${(props: ContentProps) => (props.open ? '1' : '0')};
+  max-height: ${(props) => (props.open ? '100%' : '0')};
+  overflow: hidden;
+  padding: ${(props) => (props.open ? '15px' : '0 15px')};
+  transition: all 0.3s;
 
-p {
-  margin: 0;
-}
+  p {
+    margin: 0;
+  }
 `
 
 export const MEDIA_QUERY_IS_MOBILE = '@media only screen and (max-width: 768px)'
@@ -368,17 +366,14 @@ export const CardBody = styled.div<{ multiComponents?: boolean }>`
       }
     `}
   ${MEDIA_QUERY_IS_MOBILE} {
-    padding: 0.5rem 0;
+    padding: 0rem 0;
   }
 `
 
 export const SelectContainer = styled.div`
-  width: 60%;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  flex-wrap: wrap;
   margin-top: 1rem;
-  ${MEDIA_QUERY_IS_TABLET} {
-    width: 75%;
-  }
-  ${MEDIA_QUERY_IS_MOBILE} {
-    width: 100%;
-  }
 `
