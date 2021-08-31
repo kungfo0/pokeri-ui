@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 export const CenteredContainer = styled.div`
 display: flex;
@@ -293,4 +293,92 @@ transition: all 0.3s;
 p {
   margin: 0;
 }
+`
+
+export const MEDIA_QUERY_IS_MOBILE = '@media only screen and (max-width: 768px)'
+export const MEDIA_QUERY_IS_MOBILE_XS = '@media only screen and (max-width: 525px)'
+export const MEDIA_QUERY_IS_TABLET_OR_DESKTOP = '@media only screen and (min-width: 992px)'
+export const MEDIA_QUERY_IS_TABLET = '@media only screen and (max-width: 991px) and (min-width: 769px)'
+
+export const Container = styled.div`
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.25rem 1.75rem;
+  ${MEDIA_QUERY_IS_MOBILE} {
+    font-size: 0.96em;
+    padding: 0.25rem 1.25rem;
+  }
+`
+
+export const Card = styled.div`
+  min-width: 0;
+  display: flex;
+  margin: 1.25rem 0;
+  position: relative;
+  border-radius: 3px;
+  word-wrap: break-word;
+  background-color: #fff;
+  flex-direction: column;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 5%) 0px 5px 15px 0px;
+  ${MEDIA_QUERY_IS_MOBILE} {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+`
+
+export const CardHeader = styled.div`
+  display: flex;
+  font-size: 1.15rem;
+  flex-flow: row wrap;
+  background-color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  ${MEDIA_QUERY_IS_MOBILE} {
+    font-size: 1.1rem;
+    text-align: center;
+    display: inline-block;
+    padding: 0 1.15rem 1rem;
+  }
+`
+
+export const CardBody = styled.div<{ multiComponents?: boolean }>`
+  flex: 1 1 auto;
+  min-height: 32rem;
+  padding: 0.75rem 1.25rem;
+  ${({ multiComponents }) =>
+    multiComponents &&
+    css`
+      > div {
+        margin-bottom: 1.5rem;
+        :first-of-type > label {
+          margin-top: 0;
+        }
+        > label {
+          font-size: 18px;
+          margin-bottom: 0.5rem;
+        }
+      }
+    `}
+  ${MEDIA_QUERY_IS_MOBILE} {
+    padding: 0.5rem 0;
+  }
+`
+
+export const SelectContainer = styled.div`
+  width: 60%;
+  margin-top: 1rem;
+  ${MEDIA_QUERY_IS_TABLET} {
+    width: 75%;
+  }
+  ${MEDIA_QUERY_IS_MOBILE} {
+    width: 100%;
+  }
 `

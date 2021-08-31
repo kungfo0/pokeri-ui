@@ -1,4 +1,4 @@
-import { PromiseWithCancel, RoundsForSeasonResponse } from './types'
+import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, RoundsForSeasonResponse } from './types'
 
 async function postData(url = '', data = {}, headers = {'Content-Type': 'application/json'}) {
     const response = await fetch(url, {
@@ -48,6 +48,10 @@ export const login = async (username: string, password: string) => {
 
 export const getRoundsForSeason = (season: string) => {
   return getData(`${process.env.REACT_APP_API_BASE_URL}/rounds-for-season?season=${season}`) as PromiseWithCancel<RoundsForSeasonResponse>
+} 
+
+export const getAutoComplateValues = () => {
+  return getData(`${process.env.REACT_APP_API_BASE_URL}/autocomplete-values`) as PromiseWithCancel<AutoComplateValuesRoundsForSeasonResponse>
 } 
 
 export const getSeasons = async () => {

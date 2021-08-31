@@ -69,4 +69,26 @@ export interface RoundsForSeasonResponse {
     rounds: RoundContainer[],
     season: {name: string},
     totals: TotalsProps,
-  }
+}
+
+export interface Season {
+    id: string,
+    name: string
+}
+
+export interface Player {
+    id: string,
+    name: string
+}
+
+export interface ExtraPoint {
+    id: string,
+    type: string,
+    amount: number
+}
+
+export interface AutoComplateValuesRoundsForSeasonResponse {
+    seasons: string[]
+    players: string[]
+    extraPoints: string[]
+}
