@@ -6,7 +6,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
     <StyledTable>
       <thead>
         <tr>
-          <th colSpan={4}>Round {index} - {new Date(round.round.date).toLocaleDateString('fi-FI', { year: 'numeric', month: 'numeric', day: 'numeric' })}</th>
+          <th colSpan={5}>Round {index} - {new Date(round.round.date).toLocaleDateString('fi-FI', { year: 'numeric', month: 'numeric', day: 'numeric' })}</th>
         </tr>
         <tr>
           <th>Rank</th>
