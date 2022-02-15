@@ -12,11 +12,8 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
           <th>Rank</th>
           <th>Player</th>
           <th>Eliminator</th>
-          <th>
-            Extra
-            <br />
-            Points
-          </th>
+          <th>Points</th>
+          <th>Extra</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +23,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
               <td>{index + 1}</td>
               <td>{it.eliminatedPlayer}</td>
               <td>{it.eliminator}</td>
+              <td>{it.points}</td>
               <td>
                 {it?.extraPoints?.type} {it?.extraPoints?.amount}
               </td>
