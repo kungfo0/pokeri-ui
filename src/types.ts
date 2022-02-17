@@ -19,6 +19,11 @@ export interface RoundContainer {
 }
 export interface Round {
   date: string
+  id: string
+  season: string
+  numberOfPlayers: number
+  created?: string
+  updated?: string
 }
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
@@ -39,6 +44,19 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
 
 export interface LoginFormProps {
   setApiKey: (apiKey: string) => void
+}
+
+export interface FinishedPositionDetails {
+  eliminatedPlayer: string
+  eliminator: string
+  finishedPosition: number
+  points: number
+  extrapoint: string
+}
+
+export interface RoundDetails {
+  round: Round
+  finishedPositions: FinishedPositionDetails[]
 }
 
 export interface RoundDetailsProps {
