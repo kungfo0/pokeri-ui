@@ -192,7 +192,7 @@ export const SmallButton = styled.button`
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;
   margin: 20px;
-  width: 100px;
+  width: 120px;
   height: 25px;
   border: none;
   color: white;
@@ -244,10 +244,12 @@ export const StyledTable = styled.table`
     padding: 3px;
   }
   th:first-child {
+    border-right-width: 0px;
     text-align: center;
   }
-  th {
-    text-align: left;
+  th:last-child {
+    border-left-width: 0px;
+    text-align: right;
   }
   td:first-child {
     text-align: center;

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { RoundDetailsProps } from '../types'
 import { StyledTable } from './styled-components'
+import { FaEdit } from 'react-icons/fa'
 
 function RoundDetails({ round, index }: RoundDetailsProps) {
   return (
@@ -8,8 +9,13 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
       <StyledTable>
         <thead>
           <tr>
-            <th colSpan={5}>
+            <th colSpan={4}>
               Round {index} - {new Date(round.round.date).toLocaleDateString('fi-FI', { year: 'numeric', month: 'numeric', day: 'numeric' })}
+            </th>
+            <th>
+              <Link to={`round/${round.round.id}`}>
+                <FaEdit />
+              </Link>
             </th>
           </tr>
           <tr>
@@ -36,9 +42,6 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
           })}
         </tbody>
       </StyledTable>
-      <div>
-        <Link to={`round/${round.round.id}`}>Edit</Link>
-      </div>
     </>
   )
 }

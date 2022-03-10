@@ -6,8 +6,10 @@ import { Container, Card, CardBody, CardHeader, SmallButton, FlexBox } from './s
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Multiselect } from 'multiselect-react-dropdown'
+import { useNavigate } from 'react-router-dom'
 
 function AddRound() {
+  const navigate = useNavigate()
   const [autoComplateValues, setAutoComplateValues] = useState<AutoComplateValuesRoundsForSeasonResponse | null>(null)
   const [roundDate, setRoundDate] = useState(new Date())
   const [availablePlayers, setAvailablePlayers] = useState<string[]>([])
@@ -59,19 +61,23 @@ function AddRound() {
   }
 
   const saveRound = async () => {
-    roundDate.setHours(0, 0, 0, 0)
     const data = { selectedSeason, roundDate: roundDate.toISOString(), finishedPositions, bounties, players }
     console.log('saveRound', data)
     try {
       setSaving(true)
       const response = await putRoundData(data)
       console.log('saveRound', response)
+      if (response?.round?.id !== '') {
+        console.log('juuh', response)
+        navigate('/')
+      }
     } catch (e) {}
     setSaving(false)
   }
 
   return (
     <div>
+      <SmallButton onClick={() => navigate('/')}>Back</SmallButton>
       {autoComplateValues && (
         <Container>
           <Card>

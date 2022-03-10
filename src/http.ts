@@ -1,4 +1,4 @@
-import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, RoundDetails, RoundsForSeasonResponse } from './types'
+import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, RoundDetails, RoundsForSeasonResponse, Status } from './types'
 
 async function postData(url = '', data = {}, headers = { 'Content-Type': 'application/json' }) {
   const response = await fetch(url, {
@@ -55,6 +55,30 @@ export const getData = (url: string, headers = { 'Content-Type': 'application/js
   return promise as PromiseWithCancel<any>
 }
 
+export const deleteData = (url: string, headers = { 'Content-Type': 'application/json', 'x-api-key': localStorage.getItem('apiKey') as string }) => {
+  const controller = new AbortController()
+  const signal = controller.signal
+
+  const promise = new Promise(async (resolve) => {
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        cache: 'no-cache',
+        headers,
+        signal,
+      })
+      const data = await response.json()
+      resolve(data)
+    } catch (ex: unknown) {
+      if (isAbortError(ex)) {
+        console.log(ex.message)
+      }
+    }
+  })
+  ;(promise as PromiseWithCancel<any>).cancel = () => controller.abort()
+  return promise as PromiseWithCancel<any>
+}
+
 export const login = async (username: string, password: string) => {
   return await postData(process.env.REACT_APP_API_BASE_URL + '/login', { username, password })
 }
@@ -72,9 +96,13 @@ export const getSeasons = async () => {
 }
 
 export const putRoundData = async (data: Record<string, unknown>) => {
-  return await putData(process.env.REACT_APP_API_BASE_URL + '/round', data)
+  return await putData(process.env.REACT_APP_API_BASE_URL + '/round', data) as RoundDetails
 }
 
 export const getRound = (id: string) => {
   return getData(`${process.env.REACT_APP_API_BASE_URL}/round/${id}`) as PromiseWithCancel<RoundDetails>
+}
+
+export const deleteRound = (id: string) => {
+  return deleteData(`${process.env.REACT_APP_API_BASE_URL}/round/${id}`) as PromiseWithCancel<Status>
 }

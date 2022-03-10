@@ -54,6 +54,10 @@ export interface FinishedPositionDetails {
   extrapoint: string
 }
 
+export interface Status {
+  status: string
+}
+
 export interface RoundDetails {
   round: Round
   finishedPositions: FinishedPositionDetails[]

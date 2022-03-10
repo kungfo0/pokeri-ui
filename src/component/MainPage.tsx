@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
-import AddRound from './AddRound'
+import { useNavigate } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import LogOut from './LogOut'
 import Seasons from './Seasons'
-import { CenteredContainer, RightSideContainer } from './styled-components'
+import { CenteredContainer, RightSideContainer, SmallButton } from './styled-components'
+import { FaPlus } from 'react-icons/fa'
 
 function MainPage() {
+  const navigate = useNavigate()
   const [apiKey, setApiKey] = useState('')
 
   useEffect(() => {
@@ -32,7 +34,9 @@ function MainPage() {
             <LogOut setApiKey={storeApiKey} />
           </RightSideContainer>
           <Seasons />
-          <AddRound />
+          <SmallButton onClick={() => navigate('/add')}>
+            <FaPlus /> Add Round
+          </SmallButton>
         </div>
       )}
     </div>
