@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { root } from '.'
 import AddRound from './component/AddRound'
 import EditRound from './component/EditRound'
 import MainPage from './component/MainPage'
 
 function App() {
-  const root = process.env.PUBLIC_URL || '/'
   return (
     <Router>
       <div>

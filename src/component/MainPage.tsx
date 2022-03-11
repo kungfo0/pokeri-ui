@@ -5,6 +5,7 @@ import LogOut from './LogOut'
 import Seasons from './Seasons'
 import { CenteredContainer, RightSideContainer, SmallButton } from './styled-components'
 import { FaPlus } from 'react-icons/fa'
+import { root } from '..'
 
 function MainPage() {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ function MainPage() {
             <LogOut setApiKey={storeApiKey} />
           </RightSideContainer>
           <Seasons />
-          <SmallButton onClick={() => navigate('/add')}>
+          <SmallButton onClick={() => navigate(`${root}add`)}>
             <FaPlus /> Add Round
           </SmallButton>
         </div>

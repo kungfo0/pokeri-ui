@@ -4,6 +4,8 @@ import App from './App'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
+export const root = process.env.PUBLIC_URL || '/'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Multiselect } from 'multiselect-react-dropdown'
 import { useNavigate } from 'react-router-dom'
+import { root } from '..'
 
 function AddRound() {
   const navigate = useNavigate()
@@ -69,7 +70,7 @@ function AddRound() {
       console.log('saveRound', response)
       if (response?.round?.id !== '') {
         console.log('juuh', response)
-        navigate('/')
+        navigate(root)
       }
     } catch (e) {}
     setSaving(false)
@@ -77,7 +78,7 @@ function AddRound() {
 
   return (
     <div>
-      <SmallButton onClick={() => navigate('/')}>Back</SmallButton>
+      <SmallButton onClick={() => navigate(root)}>Back</SmallButton>
       {autoComplateValues && (
         <Container>
           <Card>
