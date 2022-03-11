@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.44be40f8.chunk.css",
-    "main.js": "/static/js/main.52888e4c.chunk.js",
-    "main.js.map": "/static/js/main.52888e4c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8b752477.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8b752477.js.map",
-    "static/css/2.ecdd39c8.chunk.css": "/static/css/2.ecdd39c8.chunk.css",
-    "static/js/2.4ba4f6f2.chunk.js": "/static/js/2.4ba4f6f2.chunk.js",
-    "static/js/2.4ba4f6f2.chunk.js.map": "/static/js/2.4ba4f6f2.chunk.js.map",
-    "static/js/3.a00993d1.chunk.js": "/static/js/3.a00993d1.chunk.js",
-    "static/js/3.a00993d1.chunk.js.map": "/static/js/3.a00993d1.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.ecdd39c8.chunk.css.map": "/static/css/2.ecdd39c8.chunk.css.map",
-    "static/css/main.44be40f8.chunk.css.map": "/static/css/main.44be40f8.chunk.css.map",
-    "static/js/2.4ba4f6f2.chunk.js.LICENSE.txt": "/static/js/2.4ba4f6f2.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/background.b050665a.jpg"
+    "main.css": "/pokeri-ui/static/css/main.86c89abf.chunk.css",
+    "main.js": "/pokeri-ui/static/js/main.52888e4c.chunk.js",
+    "main.js.map": "/pokeri-ui/static/js/main.52888e4c.chunk.js.map",
+    "runtime-main.js": "/pokeri-ui/static/js/runtime-main.7d689ff2.js",
+    "runtime-main.js.map": "/pokeri-ui/static/js/runtime-main.7d689ff2.js.map",
+    "static/css/2.ecdd39c8.chunk.css": "/pokeri-ui/static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.45885aa4.chunk.js": "/pokeri-ui/static/js/2.45885aa4.chunk.js",
+    "static/js/2.45885aa4.chunk.js.map": "/pokeri-ui/static/js/2.45885aa4.chunk.js.map",
+    "static/js/3.a00993d1.chunk.js": "/pokeri-ui/static/js/3.a00993d1.chunk.js",
+    "static/js/3.a00993d1.chunk.js.map": "/pokeri-ui/static/js/3.a00993d1.chunk.js.map",
+    "index.html": "/pokeri-ui/index.html",
+    "static/css/2.ecdd39c8.chunk.css.map": "/pokeri-ui/static/css/2.ecdd39c8.chunk.css.map",
+    "static/css/main.86c89abf.chunk.css.map": "/pokeri-ui/static/css/main.86c89abf.chunk.css.map",
+    "static/js/2.45885aa4.chunk.js.LICENSE.txt": "/pokeri-ui/static/js/2.45885aa4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/pokeri-ui/static/media/background.b050665a.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8b752477.js",
+    "static/js/runtime-main.7d689ff2.js",
     "static/css/2.ecdd39c8.chunk.css",
-    "static/js/2.4ba4f6f2.chunk.js",
-    "static/css/main.44be40f8.chunk.css",
+    "static/js/2.45885aa4.chunk.js",
+    "static/css/main.86c89abf.chunk.css",
     "static/js/main.52888e4c.chunk.js"
   ]
 }
