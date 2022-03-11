@@ -1,0 +1,7 @@
+
+   
+- url: https://kungfo0.github.io/pokeri-ui/
+  selector: 'section.secondary'
+  wait: 3000
+  quality: 100
+  output: pokeri-ui.jpg
