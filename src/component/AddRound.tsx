@@ -41,8 +41,8 @@ function AddRound() {
         setSelectedSeason(resp.seasons[0])
       })
     }
-    if (!totalsValues) {
-      query.current?.cancel()
+    if (!totalsValues && selectedSeason) {
+      totalsQuery.current?.cancel()
       setTotalsValues(null)
       const tq = getTotalsForSeason(selectedSeason)
       totalsQuery.current = tq
