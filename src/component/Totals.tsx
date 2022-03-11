@@ -3,7 +3,7 @@ import { FlexBox, StyledTable } from './styled-components'
 
 function Totals({ eliminations, gamesPlayed, totalPoints }: TotalsProps) {
   return (
-    <FlexBox>
+    <FlexBox data-test-id='totals'>
       <StyledTable>
         <thead>
           <tr>
