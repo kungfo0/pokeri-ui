@@ -111,6 +111,8 @@ function AddRound() {
                   }}
                 />
                 <DatePicker selected={roundDate} onChange={(date: Date) => setRoundDate(date as Date)} dateFormat="dd.MM.yyyy" />
+                Last round winner: {autoComplateValues.lastRoundWinner}
+                Person with the most points in season { totalsValues?.season }; {totalsValues?.totals?.totalPoints[0].name}
               </FlexBox>
             </CardHeader>
             <CardBody>

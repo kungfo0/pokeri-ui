@@ -118,4 +118,5 @@ export interface AutoComplateValuesRoundsForSeasonResponse {
   seasons: string[]
   players: string[]
   extraPoints: string[]
+  lastRoundWinner: string
 }
