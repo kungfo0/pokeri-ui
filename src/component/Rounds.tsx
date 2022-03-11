@@ -5,7 +5,7 @@ import { FlexBox } from './styled-components'
 
 function Rounds({ roundsForSeason }: RoundsProps) {
   return (
-    <FlexBox>
+    <FlexBox data-test-id='rounds-for-season'>
       {roundsForSeason.map(function (it, index) {
         return <RoundDetails round={it} index={index + 1} key={index} />
       })}
