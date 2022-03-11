@@ -11,7 +11,7 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
   const [eliminations, setEliminations] = useState<NameValue[]>([])
   const [gamesPlayed, setGamesPlayed] = useState<NameValue[]>([])
   const [totalPoints, setTotalPoints] = useState<NameValue[]>([])
-  const [showRounds, setShowRounds] = useState(false)
+  const [showRounds, setShowRounds] = useState(true)
   let query = useRef<PromiseWithCancel<RoundsForSeasonResponse> | undefined>(undefined)
 
   useEffect(() => {
