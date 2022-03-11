@@ -6,8 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Screenshot rounds', () => {
-  test('should allow me to add todo items', async ({ page }) => {
-    // Create 1st todo.
+  test('should login and take a screenshot', async ({ page }) => {
     await page.locator('input:first-child').fill(process.env.POKERI_USER);
     await page.locator('input:last-child').fill(process.env.POKERI_PASS);
     await page.locator('button:first-child').click();
