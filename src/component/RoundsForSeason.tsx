@@ -37,7 +37,7 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
       ) : (
         <div>
           <SmallButton onClick={() => setShowRounds(!showRounds)}>Rounds</SmallButton>
-          <Content open={showRounds}>
+          <Content id='rounds-for-current-season' open={showRounds}>
             <Rounds roundsForSeason={rounds} />
           </Content>
           <Totals eliminations={eliminations} gamesPlayed={gamesPlayed} totalPoints={totalPoints} />
