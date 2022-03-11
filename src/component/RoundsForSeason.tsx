@@ -40,7 +40,7 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
           <Content id='rounds-for-current-season' open={showRounds}>
             <Rounds roundsForSeason={rounds} />
           </Content>
-          <Totals eliminations={eliminations} gamesPlayed={gamesPlayed} totalPoints={totalPoints} />
+          <Totals eliminations={eliminations} gamesPlayed={gamesPlayed} totalPoints={totalPoints} data-test-id='totals'/>
           <div />
         </div>
       )}
