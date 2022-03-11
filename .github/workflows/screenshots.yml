@@ -1,4 +1,4 @@
-name: Take screnshots
+name: Take screenshots
 
 on:
   push:
@@ -39,13 +39,6 @@ jobs:
         POKERI_PASS: ${{ secrets.POKERI_PASS }}
       run: |
         shot-scraper multi shots.yml
-    - name: Test secrets
-      env:
-        TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TEST_SECRET: ${{ secrets.TELEGRAM_TO }}
-      run: |
-        echo ${#TEST_GITHUB_TOKEN}
-        echo ${#TEST_SECRET}
     - name: send photo message
       uses: appleboy/telegram-action@master
       with:
