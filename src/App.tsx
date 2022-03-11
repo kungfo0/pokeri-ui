@@ -5,15 +5,16 @@ import EditRound from './component/EditRound'
 import MainPage from './component/MainPage'
 
 function App() {
+  const root = process.env.PUBLIC_URL || '/'
   return (
     <Router>
       <div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Routes>
-          <Route path="/round/:id" element={<EditRound />} />
-          <Route path="/add" element={<AddRound />} />
-          <Route path="/" element={<MainPage />} />
+          <Route path={`${root}round/:id`} element={<EditRound />} />
+          <Route path={`${root}add`} element={<AddRound />} />
+          <Route path={root} element={<MainPage />} />
         </Routes>
       </div>
     </Router>
