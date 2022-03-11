@@ -12,9 +12,12 @@ test.describe('Screenshot rounds', () => {
     await page.locator('button:first-child').click();
 
     await page.waitForSelector('table')
+    // await page.waitForSelector('text=previous')
+    // await page.locator('text=previous').click();
 
     await expect(page.locator('data-test-id=rounds-for-season')).toBeVisible()
 
-    await page.screenshot({ path: 'pokeri-ui.png', fullPage: true });
+    await page.locator('data-test-id=rounds-for-season').screenshot({ path: 'rounds.png'});
+    await page.locator('data-test-id=totals').screenshot({ path: 'totals.png'});
   });
 });

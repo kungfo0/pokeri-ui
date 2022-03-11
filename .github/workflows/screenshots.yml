@@ -24,11 +24,19 @@ jobs:
         POKERI_USER: ${{ secrets.POKERI_USER }}
         POKERI_PASS: ${{ secrets.POKERI_PASS }}
       run: cd playwright && npx playwright test
-    - name: send photo message
+    - name: send photo of rounds
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: pokeri-ui
-        photo: playwright/pokeri-ui.png
-        debug: true
+        message: Rounds
+        photo: playwright/rounds.png
+        document: playwright/rounds.png
+    - name: send photo of totals
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: Totals
+        photo: playwright/totals.png
+        document: playwright/totals.png
