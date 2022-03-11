@@ -1,7 +1,7 @@
 {
   "name": "pokeri-ui",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/pokeri-ui",
+  "homepage": "https://kungfo0.github.io/pokeri-ui",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
