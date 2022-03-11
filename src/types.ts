@@ -93,6 +93,11 @@ export interface RoundsForSeasonResponse {
   totals: TotalsProps
 }
 
+export interface TotalsForSeasonResponse {
+  season: string
+  totals: TotalsProps
+}
+
 export interface Season {
   id: string
   name: string

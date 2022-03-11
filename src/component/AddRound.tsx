@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { getAutoComplateValues, putRoundData } from '../http'
+import { getAutoComplateValues, getTotalsForSeason, putRoundData } from '../http'
 import PlayerSelect, { PositionName } from './PlayerSelect'
-import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel } from '../types'
+import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, TotalsForSeasonResponse } from '../types'
 import { Container, Card, CardBody, CardHeader, SmallButton, FlexBox } from './styled-components'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -12,6 +12,7 @@ import { root } from '..'
 function AddRound() {
   const navigate = useNavigate()
   const [autoComplateValues, setAutoComplateValues] = useState<AutoComplateValuesRoundsForSeasonResponse | null>(null)
+  const [totalsValues, setTotalsValues] = useState<TotalsForSeasonResponse | null>(null)
   const [roundDate, setRoundDate] = useState(new Date())
   const [availablePlayers, setAvailablePlayers] = useState<string[]>([])
   const [extraPoints, setExtraPoints] = useState<string[]>([])
@@ -22,6 +23,7 @@ function AddRound() {
   const [seasons, setSeasons] = useState<string[]>([])
   const [saving, setSaving] = useState<boolean>(false)
   const query = useRef<PromiseWithCancel<AutoComplateValuesRoundsForSeasonResponse> | undefined>(undefined)
+  const totalsQuery = useRef<PromiseWithCancel<TotalsForSeasonResponse> | undefined>(undefined)
 
   useEffect(() => {
     console.log('useEffect', { autoComplateValues, availablePlayers })
@@ -39,7 +41,16 @@ function AddRound() {
         setSelectedSeason(resp.seasons[0])
       })
     }
-  }, [autoComplateValues, availablePlayers])
+    if (!totalsValues) {
+      query.current?.cancel()
+      setTotalsValues(null)
+      const tq = getTotalsForSeason(selectedSeason)
+      totalsQuery.current = tq
+      tq.then((resp) => {
+        setTotalsValues(resp)
+      })
+    }
+  }, [autoComplateValues, availablePlayers, totalsValues])
 
   const setSelected = (list: PositionName[], selected: PositionName) => {
     console.log('setSelected', { list, selected })
