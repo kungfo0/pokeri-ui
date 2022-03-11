@@ -7,7 +7,7 @@ import Totals from './Totals'
 
 function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
   const [rounds, setRounds] = useState<RoundContainer[]>([])
-  const [season, setSeason] = useState({ name: '' })
+  // const [season, setSeason] = useState({ name: '' })
   const [eliminations, setEliminations] = useState<NameValue[]>([])
   const [gamesPlayed, setGamesPlayed] = useState<NameValue[]>([])
   const [totalPoints, setTotalPoints] = useState<NameValue[]>([])
@@ -21,7 +21,7 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
     query.current = q
     q.then((resp) => {
       setRounds(resp.rounds)
-      setSeason(resp.season)
+      // setSeason(resp.season)
       setEliminations(resp.totals.eliminations)
       setGamesPlayed(resp.totals.gamesPlayed)
       setTotalPoints(resp.totals.totalPoints)
