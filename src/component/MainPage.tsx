@@ -35,7 +35,7 @@ function MainPage() {
             <LogOut setApiKey={storeApiKey} />
           </RightSideContainer>
           <Seasons />
-          <SmallButton onClick={() => navigate(`${root}add`)}>
+          <SmallButton onClick={() => navigate(`${root}/add`)}>
             <FaPlus /> Add Round
           </SmallButton>
         </div>

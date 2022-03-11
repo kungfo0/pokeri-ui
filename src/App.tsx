@@ -12,9 +12,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Routes>
-          <Route path={`${root}round/:id`} element={<EditRound />} />
-          <Route path={`${root}add`} element={<AddRound />} />
-          <Route path={root} element={<MainPage />} />
+          <Route path={`${root}/round/:id`} element={<EditRound />} />
+          <Route path={`${root}/add`} element={<AddRound />} />
+          <Route path={`${root}/`} element={<MainPage />} />
         </Routes>
       </div>
     </Router>

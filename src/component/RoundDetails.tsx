@@ -14,7 +14,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
               Round {index} - {new Date(round.round.date).toLocaleDateString('fi-FI', { year: 'numeric', month: 'numeric', day: 'numeric' })}
             </th>
             <th>
-              <Link to={`${root}round/${round.round.id}`}>
+              <Link to={`${root}/round/${round.round.id}`}>
                 <FaEdit />
               </Link>
             </th>
