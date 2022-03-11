@@ -19,6 +19,9 @@ jobs:
     - name: Install Playwright
       run: cd playwright && npx playwright install --with-deps
     - name: Run Playwright tests
+      env:
+        POKERI_USER: ${{ secrets.POKERI_USER }}
+        POKERI_PASS: ${{ secrets.POKERI_PASS }}
       run: cd playwright && npx playwright test &&
     - name: send photo message
       uses: appleboy/telegram-action@master
