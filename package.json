@@ -93,7 +93,7 @@
     "prettier": "^2.3.2"
   },
   "scripts": {
-    "predeploy": "PUBLIC_URL=/pokeri-ui npm run build",
+    "predeploy": "PUBLIC_URL=/pokeri-ui/ npm run build",
     "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
