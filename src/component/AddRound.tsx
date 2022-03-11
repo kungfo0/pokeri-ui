@@ -50,7 +50,7 @@ function AddRound() {
         setTotalsValues(resp)
       })
     }
-  }, [autoComplateValues, availablePlayers, totalsValues])
+  }, [autoComplateValues, availablePlayers, totalsValues, selectedSeason])
 
   const setSelected = (list: PositionName[], selected: PositionName) => {
     console.log('setSelected', { list, selected })
