@@ -19,7 +19,7 @@ function EditRound() {
       const response = await deleteRound(id || '')
       console.log('deleteRound', response)
       if (response.status === 'deleted') {
-        navigate(root)
+        navigate(`${root}/`)
       }
     } catch (e) {}
     setDeleting(false)
@@ -35,7 +35,7 @@ function EditRound() {
 
   return (
     <>
-      <SmallButton onClick={() => navigate(root)}>Back</SmallButton>
+      <SmallButton onClick={() => navigate(`${root}/`)}>Back</SmallButton>
       {round ? (
         <>
           <StyledTable>

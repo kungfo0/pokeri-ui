@@ -70,7 +70,7 @@ function AddRound() {
       console.log('saveRound', response)
       if (response?.round?.id !== '') {
         console.log('juuh', response)
-        navigate(root)
+        navigate(`${root}/`)
       }
     } catch (e) {}
     setSaving(false)
@@ -78,7 +78,7 @@ function AddRound() {
 
   return (
     <div>
-      <SmallButton onClick={() => navigate(root)}>Back</SmallButton>
+      <SmallButton onClick={() => navigate(`${root}/`)}>Back</SmallButton>
       {autoComplateValues && (
         <Container>
           <Card>
