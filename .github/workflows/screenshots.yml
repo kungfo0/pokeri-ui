@@ -1,8 +1,6 @@
 name: Take screenshots
 
 on:
-  push:
-  workflow_dispatch:
   schedule:
     - cron:  '0 12 * * WED'
   repository_dispatch:
