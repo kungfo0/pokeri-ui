@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pokeri-ui/static/css/main.86c89abf.chunk.css",
-    "main.js": "/pokeri-ui/static/js/main.6423b47a.chunk.js",
-    "main.js.map": "/pokeri-ui/static/js/main.6423b47a.chunk.js.map",
+    "main.js": "/pokeri-ui/static/js/main.1db87112.chunk.js",
+    "main.js.map": "/pokeri-ui/static/js/main.1db87112.chunk.js.map",
     "runtime-main.js": "/pokeri-ui/static/js/runtime-main.7d689ff2.js",
     "runtime-main.js.map": "/pokeri-ui/static/js/runtime-main.7d689ff2.js.map",
     "static/css/2.ecdd39c8.chunk.css": "/pokeri-ui/static/css/2.ecdd39c8.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.ecdd39c8.chunk.css",
     "static/js/2.11a74ec9.chunk.js",
     "static/css/main.86c89abf.chunk.css",
-    "static/js/main.6423b47a.chunk.js"
+    "static/js/main.1db87112.chunk.js"
   ]
 }
