@@ -1,22 +1,19 @@
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import AddRound from './component/AddRound'
-import EditRound from './component/EditRound'
-import MainPage from './component/MainPage'
+import AppRoutes from './AppRoutes'
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+})
 
 function App() {
   return (
-    <Router>
-      <div>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Routes>
-          <Route path="/round/:id" element={<EditRound />} />
-          <Route path="/add" element={<AddRound />} />
-          <Route path="/" element={<MainPage />} />
-        </Routes>
-      </div>
-    </Router>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <AppRoutes />
+    </ThemeProvider>
   )
 }
 

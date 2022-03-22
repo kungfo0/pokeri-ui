@@ -274,7 +274,6 @@ export const InstagramBackground = 'linear-gradient(to right, #A12AC4 0%, #ED586
 export const TwitterBackground = 'linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)'
 
 export const Header = styled.h1`
-  color: white;
 `
 
 interface ContentProps {
@@ -282,7 +281,6 @@ interface ContentProps {
 }
 
 export const Content = styled.div`
-  border: 1px solid gray;
   border-top: none;
   opacity: ${(props: ContentProps) => (props.open ? '1' : '0')};
   max-height: ${(props) => (props.open ? '100%' : '0')};

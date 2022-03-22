@@ -1,8 +1,11 @@
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import ButtonGroup from '@mui/material/ButtonGroup'
+import CircularProgress from '@mui/material/CircularProgress'
+import Typography from '@mui/material/Typography'
 import { useState, useEffect } from 'react'
 import { getSeasons } from '../http'
 import RoundsForSeason from './RoundsForSeason'
-
-import { FlexBox, Header, SmallButton, Spinner } from './styled-components'
 
 function Seasons() {
   const [selected, setSelected] = useState('')
@@ -45,19 +48,23 @@ function Seasons() {
     <div>
       {seasons.length === 0 ? (
         <div>
-          <Spinner />
+          <CircularProgress />
         </div>
       ) : (
-        <FlexBox>
-          <SmallButton onClick={setPrevious} disabled={!hasPrevious}>
-            Previous
-          </SmallButton>
-          <Header>{selected}</Header>
-          <SmallButton onClick={setNext} disabled={!hasNext}>
-            Next
-          </SmallButton>
+        <Box sx={{ p: 2, boxShadow: 0 }}>
+          <ButtonGroup variant="contained" aria-label="outlined primary button group" sx={{ mb: 2 }}>
+            <Button variant="contained" onClick={setPrevious} disabled={!hasPrevious}>
+              Previous
+            </Button>
+            <Typography variant="h5" component="div" sx={{ p: 2 }}>
+              {selected}
+            </Typography>
+            <Button variant="contained" onClick={setNext} disabled={!hasNext}>
+              Next
+            </Button>
+          </ButtonGroup>
           <RoundsForSeason selectedSeason={selected} />
-        </FlexBox>
+        </Box>
       )}
     </div>
   )

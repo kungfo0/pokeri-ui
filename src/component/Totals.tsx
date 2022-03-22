@@ -1,73 +1,105 @@
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Box } from '@mui/material'
 import { TotalsProps } from '../types'
-import { FlexBox, StyledTable } from './styled-components'
 
 function Totals({ eliminations, gamesPlayed, totalPoints }: TotalsProps) {
   return (
-    <FlexBox>
-      <StyledTable>
-        <thead>
-          <tr>
-            <th colSpan={2}>Participations</th>
-          </tr>
-          <tr>
-            <th>Player</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {gamesPlayed.map(function (it, index) {
-            return (
-              <tr key={index}>
-                <td>{it.name}</td>
-                <td>{it.value}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </StyledTable>
-      <StyledTable>
-        <thead>
-          <tr>
-            <th colSpan={2}>Total Points</th>
-          </tr>
-          <tr>
-            <th>Player</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {totalPoints.map(function (it, index) {
-            return (
-              <tr key={index}>
-                <td>{it.name}</td>
-                <td>{it.value}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </StyledTable>
-      <StyledTable>
-        <thead>
-          <tr>
-            <th colSpan={2}>Eliminations</th>
-          </tr>
-          <tr>
-            <th>Player</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {eliminations.map(function (it, index) {
-            return (
-              <tr key={index}>
-                <td>{it.name}</td>
-                <td>{it.value}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </StyledTable>
-    </FlexBox>
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', m: 2 }}>
+      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 500, m: 1, p: 1 }}>
+        <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" colSpan={2}>
+                Participations
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                Player
+              </TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                Amount
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {gamesPlayed.map((it, index) => (
+              <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell padding="none" align="left">
+                  {it.name}
+                </TableCell>
+                <TableCell padding="none" align="left">
+                  {it.value}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 500, m: 1, p: 1 }}>
+        <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" colSpan={2}>
+                Total Points
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                Player
+              </TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                Amount
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {totalPoints.map((it, index) => (
+              <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell padding="none" align="left">
+                  {it.name}
+                </TableCell>
+                <TableCell padding="none" align="left">
+                  {it.value}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 500, m: 1, p: 1 }}>
+        <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" colSpan={2}>
+                Eliminations
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                Player
+              </TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                Amount
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {eliminations.map((it, index) => (
+              <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell padding="none" align="left">
+                  {it.name}
+                </TableCell>
+                <TableCell padding="none" align="left">
+                  {it.value}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   )
 }
 
