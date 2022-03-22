@@ -4,6 +4,7 @@ import { deleteRound, getRound } from '../http'
 import { PromiseWithCancel, RoundDetails } from '../types'
 import { SmallButton, Spinner, StyledTable } from './styled-components'
 import { FaTrash } from 'react-icons/fa'
+import { root } from '..'
 
 function EditRound() {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ function EditRound() {
       const response = await deleteRound(id || '')
       console.log('deleteRound', response)
       if (response.status === 'deleted') {
-        navigate('/')
+        navigate(`${root}/`)
       }
     } catch (e) {}
     setDeleting(false)
@@ -34,7 +35,7 @@ function EditRound() {
 
   return (
     <>
-      <SmallButton onClick={() => navigate('/')}>Back</SmallButton>
+      <SmallButton onClick={() => navigate(`${root}/`)}>Back</SmallButton>
       {round ? (
         <>
           <StyledTable>

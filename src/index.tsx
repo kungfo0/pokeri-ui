@@ -4,6 +4,9 @@ import App from './App'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
+const publicUrl = (process.env.PUBLIC_URL || '')
+export const root = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

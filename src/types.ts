@@ -93,6 +93,11 @@ export interface RoundsForSeasonResponse {
   totals: TotalsProps
 }
 
+export interface TotalsForSeasonResponse {
+  season: string
+  totals: TotalsProps
+}
+
 export interface Season {
   id: string
   name: string
@@ -113,4 +118,5 @@ export interface AutoComplateValuesRoundsForSeasonResponse {
   seasons: string[]
   players: string[]
   extraPoints: string[]
+  lastRoundWinner: string
 }

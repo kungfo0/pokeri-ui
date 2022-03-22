@@ -1,16 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { getAutoComplateValues, putRoundData } from '../http'
+import { getAutoComplateValues, getTotalsForSeason, putRoundData } from '../http'
 import PlayerSelect, { PositionName } from './PlayerSelect'
-import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel } from '../types'
+import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, TotalsForSeasonResponse } from '../types'
 import { Container, Card, CardBody, CardHeader, SmallButton, FlexBox } from './styled-components'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Multiselect } from 'multiselect-react-dropdown'
 import { useNavigate } from 'react-router-dom'
+import { root } from '..'
 
 function AddRound() {
   const navigate = useNavigate()
   const [autoComplateValues, setAutoComplateValues] = useState<AutoComplateValuesRoundsForSeasonResponse | null>(null)
+  const [totalsValues, setTotalsValues] = useState<TotalsForSeasonResponse | null>(null)
   const [roundDate, setRoundDate] = useState(new Date())
   const [availablePlayers, setAvailablePlayers] = useState<string[]>([])
   const [extraPoints, setExtraPoints] = useState<string[]>([])
@@ -21,6 +23,7 @@ function AddRound() {
   const [seasons, setSeasons] = useState<string[]>([])
   const [saving, setSaving] = useState<boolean>(false)
   const query = useRef<PromiseWithCancel<AutoComplateValuesRoundsForSeasonResponse> | undefined>(undefined)
+  const totalsQuery = useRef<PromiseWithCancel<TotalsForSeasonResponse> | undefined>(undefined)
 
   useEffect(() => {
     console.log('useEffect', { autoComplateValues, availablePlayers })
@@ -38,7 +41,16 @@ function AddRound() {
         setSelectedSeason(resp.seasons[0])
       })
     }
-  }, [autoComplateValues, availablePlayers])
+    if (!totalsValues && selectedSeason) {
+      totalsQuery.current?.cancel()
+      setTotalsValues(null)
+      const tq = getTotalsForSeason(selectedSeason)
+      totalsQuery.current = tq
+      tq.then((resp) => {
+        setTotalsValues(resp)
+      })
+    }
+  }, [autoComplateValues, availablePlayers, totalsValues, selectedSeason])
 
   const setSelected = (list: PositionName[], selected: PositionName) => {
     console.log('setSelected', { list, selected })
@@ -69,7 +81,7 @@ function AddRound() {
       console.log('saveRound', response)
       if (response?.round?.id !== '') {
         console.log('juuh', response)
-        navigate('/')
+        navigate(`${root}/`)
       }
     } catch (e) {}
     setSaving(false)
@@ -77,7 +89,7 @@ function AddRound() {
 
   return (
     <div>
-      <SmallButton onClick={() => navigate('/')}>Back</SmallButton>
+      <SmallButton onClick={() => navigate(`${root}/`)}>Back</SmallButton>
       {autoComplateValues && (
         <Container>
           <Card>
@@ -102,6 +114,8 @@ function AddRound() {
               </FlexBox>
             </CardHeader>
             <CardBody>
+              <div>Last round winner: <strong>{autoComplateValues.lastRoundWinner}</strong></div>
+              <div>Person with the most points in season { totalsValues?.season }: <strong>{totalsValues?.totals?.totalPoints[0].name}</strong></div>
               {[...Array(players)].map((x, i) => (
                 <PlayerSelect
                   values={availablePlayers.map((it) => ({ position: i + 1, name: it }))}
