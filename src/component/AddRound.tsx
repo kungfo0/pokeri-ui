@@ -52,24 +52,52 @@ function AddRound() {
     }
   }, [autoComplateValues, availablePlayers, totalsValues, selectedSeason])
 
-  const setSelected = (list: PositionName[], selected: PositionName) => {
-    console.log('setSelected', { list, selected })
-    setFinishedPositions([...finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position), list])
-  }
+  const handleChange = (value: string) => {
+    if (value.startsWith('eliminated-')) {
+      const position = parseInt(value.split('#')[0].split('-')[1])
+      const name = value.split('#')[1]
+      const selected = { position, name }
 
-  const setRemoved = (list: PositionName[], removed: PositionName) => {
-    console.log('setRemoved', { list, removed })
-    setFinishedPositions(finishedPositions.filter((e) => e.length > 0 && e[0].position !== removed.position))
-  }
+      const eliminator = finishedPositions.find((it) => it.length > 1 && it[1].position === position)
+      const list = [selected]
+      if (eliminator) {
+        list.push(eliminator[1])
+      }
 
-  const setBountySelected = (list: PositionName[], selected: PositionName) => {
-    console.log('setBountySelected', { list, selected })
-    setBounties([...bounties, selected])
-  }
+      console.log({ position, name })
+      if (name !== 'removed') {
+        setFinishedPositions([...finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position), list])
+      } else {
+        setFinishedPositions(finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position))
+      }
+    } else if (value.startsWith('eliminator-')) {
+      const position = parseInt(value.split('#')[0].split('-')[1])
+      const name = value.split('#')[1]
+      const selected = { position, name }
 
-  const setBountyRemoved = (list: PositionName[], selected: PositionName) => {
-    console.log('setBountyRemoved', { list, selected })
-    setBounties(bounties.filter((e) => e.position !== selected.position))
+      const eliminated = finishedPositions.find((it) => it.length > 0 && it[0].position === position)
+      let list = [selected]
+      if (eliminated) {
+        list = [eliminated[0], selected]
+        if (name !== 'removed') {
+          setFinishedPositions([...finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position), list])
+        } else {
+          setFinishedPositions(finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position))
+        }
+      }
+
+      console.log({ position, name })
+    } else if (value.startsWith('bounty-')) {
+      const position = parseInt(value.split('#')[0].split('-')[1])
+      const name = value.split('#')[1]
+      const selected = { position, name }
+      console.log({ position, name })
+      if (name !== 'removed') {
+        setBounties([...bounties, selected])
+      } else {
+        setBounties(bounties.filter((e) => e.position !== selected.position))
+      }
+    }
   }
 
   const saveRound = async () => {
@@ -124,11 +152,7 @@ function AddRound() {
                 <PlayerSelect
                   values={availablePlayers.map((it) => ({ position: i + 1, name: it }))}
                   extraPoints={extraPoints.map((it) => ({ position: i + 1, name: it }))}
-                  onSelect={setSelected}
-                  onBountySelect={setBountySelected}
-                  onBountyRemove={setBountyRemoved}
-                  onRemove={setRemoved}
-                  selectionLimit={i == 0 ? 1 : 2}
+                  onSelect={handleChange}
                   index={++i}
                   key={i}
                 />
@@ -136,17 +160,17 @@ function AddRound() {
 
               {players < 10 && (
                 <Button variant="contained" onClick={() => setPlayers(players + 1)} sx={{ m: 1 }}>
-                  Add
+                  Add Row
                 </Button>
               )}
               {players > 1 && (
                 <Button variant="contained" onClick={() => setPlayers(players - 1)} sx={{ mr: 1 }}>
-                  Remove
+                  Remove Row
                 </Button>
               )}
               {players > 1 && players < 11 && finishedPositions.length === players && finishedPositions.filter((it) => it.length > 0 && it[0].position !== 1).every((it) => it.length === 2) && (
                 <Button variant="contained" onClick={() => saveRound()} disabled={saving}>
-                  Save
+                  Save Round
                 </Button>
               )}
             </CardContent>

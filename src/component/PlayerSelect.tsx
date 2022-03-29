@@ -1,5 +1,4 @@
-import { Box } from '@mui/material'
-import { Multiselect } from 'multiselect-react-dropdown'
+import { Box, FormControl, InputLabel, NativeSelect } from '@mui/material'
 
 export interface PositionName {
   position: number
@@ -9,54 +8,73 @@ export interface PositionName {
 type PlayerSelectProps = Readonly<{
   values: PositionName[]
   extraPoints: PositionName[]
-  selectionLimit: number
   index: number
-  onSelect: (selectedList: PositionName[], selected: PositionName) => any
-  onRemove: (removedList: PositionName[], removed: PositionName) => any
-  onBountySelect: (selectedList: PositionName[], selected: PositionName) => any
-  onBountyRemove: (selectedList: PositionName[], selected: PositionName) => any
+  onSelect: (value: string) => any
 }>
 
-function PlayerSelect({ values, extraPoints, selectionLimit, index, onSelect, onRemove, onBountySelect, onBountyRemove }: PlayerSelectProps) {
+function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProps) {
   return (
     <Box sx={{ display: 'flex', m: 1 }}>
       <p>{index}.</p>
-      <Multiselect
-        key={index}
-        id={`finishedposition-${index}`}
-        displayValue="name"
-        isObject={true}
-        onRemove={onRemove}
-        onSearch={function noRefCheck() {}}
-        onSelect={onSelect}
-        options={values}
-        selectedValues={[]}
-        placeholder={index === 1 ? 'Eliminated' : 'Eliminated / Eliminator'}
-        selectionLimit={selectionLimit}
-        style={{
-          multiselectContainer: {
-            width: '500px',
-          },
-        }}
-      />
-      <Multiselect
-        key={`extraPoints-${index}`}
-        id={`extraPoints-${index}`}
-        displayValue="name"
-        isObject={true}
-        onSearch={function noRefCheck() {}}
-        onSelect={onBountySelect}
-        onRemove={onBountyRemove}
-        options={extraPoints}
-        selectedValues={[]}
-        selectionLimit={1}
-        placeholder={'Bounty'}
-        style={{
-          multiselectContainer: {
-            width: '130px',
-          },
-        }}
-      />
+      <FormControl fullWidth sx={{ m: 1 }}>
+        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          Eliminated
+        </InputLabel>
+        <NativeSelect
+          onChange={(e) => onSelect(e.target.value)}
+          inputProps={{
+            name: 'Eliminated',
+            id: `eliminated-${index}`,
+          }}
+        >
+          <option key={`eliminated-${index}#removed`} value={`eliminated-${index}#removed`}></option>
+          {values.map((it) => (
+            <option key={`eliminated-${it.position}#${it.name}`} value={`eliminated-${it.position}#${it.name}`}>
+              {it.name}
+            </option>
+          ))}
+        </NativeSelect>
+      </FormControl>
+      {index > 1 && (
+        <FormControl fullWidth sx={{ m: 1 }}>
+          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            Eliminator
+          </InputLabel>
+          <NativeSelect
+            onChange={(e) => onSelect(e.target.value)}
+            inputProps={{
+              name: 'Eliminator',
+              id: `eliminator-${index}`,
+            }}
+          >
+            <option key={`eliminator-${index}#removed`} value={`eliminator-${index}#removed`}></option>
+            {values.map((it) => (
+              <option key={`eliminator-${it.position}#${it.name}`} value={`eliminator-${it.position}#${it.name}`}>
+                {it.name}
+              </option>
+            ))}
+          </NativeSelect>
+        </FormControl>
+      )}
+      <FormControl fullWidth sx={{ m: 1 }}>
+        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          Bounty
+        </InputLabel>
+        <NativeSelect
+          onChange={(e) => onSelect(e.target.value)}
+          inputProps={{
+            name: 'Bounty',
+            id: `bounty-${index}`,
+          }}
+        >
+          <option key={`bounty-${index}#removed`} value={`bounty-${index}#removed`}></option>
+          {extraPoints.map((it) => (
+            <option key={`bounty-${it.position}#${it.name}`} value={`bounty-${it.position}#${it.name}`}>
+              {it.name}
+            </option>
+          ))}
+        </NativeSelect>
+      </FormControl>
     </Box>
   )
 }
