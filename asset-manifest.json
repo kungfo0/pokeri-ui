@@ -1,26 +1,16 @@
 {
   "files": {
-    "main.css": "/pokeri-ui/static/css/main.fd998769.chunk.css",
-    "main.js": "/pokeri-ui/static/js/main.5c3df16a.chunk.js",
-    "main.js.map": "/pokeri-ui/static/js/main.5c3df16a.chunk.js.map",
-    "runtime-main.js": "/pokeri-ui/static/js/runtime-main.28a9c300.js",
-    "runtime-main.js.map": "/pokeri-ui/static/js/runtime-main.28a9c300.js.map",
-    "static/css/2.ecdd39c8.chunk.css": "/pokeri-ui/static/css/2.ecdd39c8.chunk.css",
-    "static/js/2.5604be2e.chunk.js": "/pokeri-ui/static/js/2.5604be2e.chunk.js",
-    "static/js/2.5604be2e.chunk.js.map": "/pokeri-ui/static/js/2.5604be2e.chunk.js.map",
-    "static/js/3.19e2c5bc.chunk.js": "/pokeri-ui/static/js/3.19e2c5bc.chunk.js",
-    "static/js/3.19e2c5bc.chunk.js.map": "/pokeri-ui/static/js/3.19e2c5bc.chunk.js.map",
+    "main.css": "/pokeri-ui/static/css/main.d5bd201b.css",
+    "main.js": "/pokeri-ui/static/js/main.16f8130b.js",
+    "static/js/651.632c53f6.chunk.js": "/pokeri-ui/static/js/651.632c53f6.chunk.js",
+    "static/media/background.jpg": "/pokeri-ui/static/media/background.b050665ae0bd70312f56.jpg",
     "index.html": "/pokeri-ui/index.html",
-    "static/css/2.ecdd39c8.chunk.css.map": "/pokeri-ui/static/css/2.ecdd39c8.chunk.css.map",
-    "static/css/main.fd998769.chunk.css.map": "/pokeri-ui/static/css/main.fd998769.chunk.css.map",
-    "static/js/2.5604be2e.chunk.js.LICENSE.txt": "/pokeri-ui/static/js/2.5604be2e.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/pokeri-ui/static/media/background.b050665a.jpg"
+    "main.d5bd201b.css.map": "/pokeri-ui/static/css/main.d5bd201b.css.map",
+    "main.16f8130b.js.map": "/pokeri-ui/static/js/main.16f8130b.js.map",
+    "651.632c53f6.chunk.js.map": "/pokeri-ui/static/js/651.632c53f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.28a9c300.js",
-    "static/css/2.ecdd39c8.chunk.css",
-    "static/js/2.5604be2e.chunk.js",
-    "static/css/main.fd998769.chunk.css",
-    "static/js/main.5c3df16a.chunk.js"
+    "static/css/main.d5bd201b.css",
+    "static/js/main.16f8130b.js"
   ]
 }
