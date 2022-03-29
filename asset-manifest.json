@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pokeri-ui/static/css/main.d5bd201b.css",
-    "main.js": "/pokeri-ui/static/js/main.a3a74640.js",
+    "main.js": "/pokeri-ui/static/js/main.1b4d047b.js",
     "static/js/651.632c53f6.chunk.js": "/pokeri-ui/static/js/651.632c53f6.chunk.js",
     "static/media/background.jpg": "/pokeri-ui/static/media/background.b050665ae0bd70312f56.jpg",
     "index.html": "/pokeri-ui/index.html",
     "main.d5bd201b.css.map": "/pokeri-ui/static/css/main.d5bd201b.css.map",
-    "main.a3a74640.js.map": "/pokeri-ui/static/js/main.a3a74640.js.map",
+    "main.1b4d047b.js.map": "/pokeri-ui/static/js/main.1b4d047b.js.map",
     "651.632c53f6.chunk.js.map": "/pokeri-ui/static/js/651.632c53f6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d5bd201b.css",
-    "static/js/main.a3a74640.js"
+    "static/js/main.1b4d047b.js"
   ]
 }
