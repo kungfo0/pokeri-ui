@@ -24,7 +24,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
       <CardHeader
         sx={{ p: 1 }}
         action={
-          <Link href={`${root}/round/${round.round.id}`} onClick={() => navigate(`${root}/round/${round.round.id}`)}>
+          <Link onClick={() => navigate(`${root}/round/${round.round.id}`)}>
             <IconButton aria-label="settings">
               <EditIcon />
             </IconButton>
