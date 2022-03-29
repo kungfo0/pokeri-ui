@@ -64,25 +64,27 @@ function EditRound() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {round.finishedPositions.map((it, index) => (
-                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                      <TableCell padding="none" component="th" scope="row">
-                        {index + 1}
-                      </TableCell>
-                      <TableCell padding="none" align="left">
-                        {it.eliminatedPlayer}
-                      </TableCell>
-                      <TableCell padding="none" align="left">
-                        {it.eliminator}
-                      </TableCell>
-                      <TableCell padding="none" align="right">
-                        {it.points}
-                      </TableCell>
-                      <TableCell padding="none" align="right">
-                        {it?.extrapoint}
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                  {round.finishedPositions
+                    .sort((a, b) => (a.finishedPosition < b.finishedPosition ? -1 : 1))
+                    .map((it, index) => (
+                      <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        <TableCell padding="none" component="th" scope="row">
+                          {index + 1}
+                        </TableCell>
+                        <TableCell padding="none" align="left">
+                          {it.eliminatedPlayer}
+                        </TableCell>
+                        <TableCell padding="none" align="left">
+                          {it.eliminator}
+                        </TableCell>
+                        <TableCell padding="none" align="right">
+                          {it.points}
+                        </TableCell>
+                        <TableCell padding="none" align="right">
+                          {it?.extrapoint}
+                        </TableCell>
+                      </TableRow>
+                    ))}
                 </TableBody>
               </Table>
             </TableContainer>
