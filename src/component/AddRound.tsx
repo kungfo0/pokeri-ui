@@ -4,10 +4,9 @@ import PlayerSelect, { PositionName } from './PlayerSelect'
 import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, TotalsForSeasonResponse } from '../types'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { Multiselect } from 'multiselect-react-dropdown'
 import { useNavigate } from 'react-router-dom'
 import { root } from '..'
-import { Box, Button, Card, CardContent, Container, Paper } from '@mui/material'
+import { Box, Button, Card, CardContent, Container, FormControl, InputLabel, NativeSelect, Paper } from '@mui/material'
 
 function AddRound() {
   const navigate = useNavigate()
@@ -126,20 +125,24 @@ function AddRound() {
             <CardContent>
               <Box>
                 Add Round Details
-                <Multiselect
-                  isObject={false}
-                  selectedValues={[seasons.length > 0 ? seasons[0] : '']}
-                  onSearch={function noRefCheck() {}}
-                  onSelect={(list, selected) => setSelectedSeason(selected)}
-                  options={seasons}
-                  placeholder={'Season'}
-                  selectionLimit={1}
-                  style={{
-                    multiselectContainer: {
-                      flexGrow: '1',
-                    },
-                  }}
-                />
+                <FormControl fullWidth>
+                  <InputLabel variant="standard" htmlFor="season">
+                    Season
+                  </InputLabel>
+                  <NativeSelect
+                    onChange={(e) => setSelectedSeason(e.target.value)}
+                    inputProps={{
+                      name: 'Season',
+                      id: 'season',
+                    }}
+                  >
+                    {seasons.map((it, index) => (
+                      <option key={it} value={it} selected={index === 0}>
+                        {it}
+                      </option>
+                    ))}
+                  </NativeSelect>
+                </FormControl>
                 <DatePicker selected={roundDate} onChange={(date: Date) => setRoundDate(date as Date)} dateFormat="dd.MM.yyyy" />
               </Box>
               <div>
@@ -158,21 +161,23 @@ function AddRound() {
                 />
               ))}
 
-              {players < 10 && (
-                <Button variant="contained" onClick={() => setPlayers(players + 1)} sx={{ m: 1 }}>
-                  Add Row
-                </Button>
-              )}
-              {players > 1 && (
-                <Button variant="contained" onClick={() => setPlayers(players - 1)} sx={{ mr: 1 }}>
-                  Remove Row
-                </Button>
-              )}
-              {players > 1 && players < 11 && finishedPositions.length === players && finishedPositions.filter((it) => it.length > 0 && it[0].position !== 1).every((it) => it.length === 2) && (
-                <Button variant="contained" onClick={() => saveRound()} disabled={saving}>
-                  Save Round
-                </Button>
-              )}
+              <Button variant="contained" onClick={() => setPlayers(players + 1)} sx={{ m: 1 }} disabled={players >= 10}>
+                Add Row
+              </Button>
+              <Button variant="contained" onClick={() => setPlayers(players - 1)} sx={{ mr: 1 }} disabled={players <= 1}>
+                Remove Row
+              </Button>
+
+              <Button
+                variant="contained"
+                onClick={() => saveRound()}
+                disabled={
+                  saving ||
+                  !(players > 1 && players < 11 && finishedPositions.length === players && finishedPositions.filter((it) => it.length > 0 && it[0].position !== 1).every((it) => it.length === 2))
+                }
+              >
+                Save Round
+              </Button>
             </CardContent>
           </Card>
         </Container>
