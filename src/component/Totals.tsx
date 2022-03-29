@@ -3,7 +3,7 @@ import { TotalsProps } from '../types'
 
 function Totals({ eliminations, gamesPlayed, totalPoints }: TotalsProps) {
   return (
-    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', m: 2 }}>
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', m: 2 }} data-test-id="totals">
       <TableContainer component={Paper} sx={{ boxShadow: 0, width: 500, m: 1, p: 1 }}>
         <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
           <TableHead>
