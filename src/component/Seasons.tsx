@@ -52,14 +52,14 @@ function Seasons() {
         </div>
       ) : (
         <Box sx={{ p: 2, boxShadow: 0 }}>
-          <ButtonGroup variant="contained" aria-label="outlined primary button group" sx={{ mb: 2, minWidth: 300 }}>
-            <Button variant="contained" onClick={setPrevious} disabled={!hasPrevious} sx={{ width: 150 }}>
+          <ButtonGroup variant="contained" aria-label="outlined primary button group" sx={{ mb: 2, minWidth: 250 }}>
+            <Button variant="contained" onClick={setPrevious} disabled={!hasPrevious} sx={{ width: 120 }}>
               Previous
             </Button>
             <Typography variant="h5" component="div" sx={{ p: 2 }}>
               {selected}
             </Typography>
-            <Button variant="contained" onClick={setNext} disabled={!hasNext} sx={{ width: 150 }}>
+            <Button variant="contained" onClick={setNext} disabled={!hasNext} sx={{ width: 120 }}>
               Next
             </Button>
           </ButtonGroup>
