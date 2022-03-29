@@ -1,10 +1,9 @@
-import { Collapse, Card, CardActions, IconButton, styled, IconButtonProps, Typography } from '@mui/material'
+import { Collapse, Card, CardActions, IconButton, styled, IconButtonProps, Typography, CircularProgress } from '@mui/material'
 import Box from '@mui/material/Box'
 import React, { useState, useEffect, useRef } from 'react'
 import { getRoundsForSeason } from '../http'
 import { RoundContainer, RoundsForSeasonProps, NameValue, RoundsForSeasonResponse, PromiseWithCancel } from '../types'
 import Rounds from './Rounds'
-import { Spinner } from './styled-components'
 import Totals from './Totals'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
@@ -50,9 +49,9 @@ function RoundsForSeason({ selectedSeason }: RoundsForSeasonProps) {
   return (
     <div>
       {rounds.length === 0 ? (
-        <div>
-          <Spinner />
-        </div>
+        <Box>
+          <CircularProgress />
+        </Box>
       ) : (
         <Box>
           <Card sx={{ mb: 2 }}>

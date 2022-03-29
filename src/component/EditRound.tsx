@@ -2,10 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { deleteRound, getRound } from '../http'
 import { PromiseWithCancel, RoundDetails } from '../types'
-import { Spinner } from './styled-components'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { root } from '..'
-import { CardContent, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material'
+import { CardContent, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button, Box, CircularProgress } from '@mui/material'
 
 function EditRound() {
   const navigate = useNavigate()
@@ -94,7 +93,9 @@ function EditRound() {
           </Button>
         </>
       ) : (
-        <Spinner />
+        <Box>
+          <CircularProgress />
+        </Box>
       )}
     </Paper>
   )

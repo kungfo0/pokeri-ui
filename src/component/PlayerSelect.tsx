@@ -13,6 +13,14 @@ type PlayerSelectProps = Readonly<{
 }>
 
 function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProps) {
+  const handleEliminatedChange = (value: string, index: number) => {
+    onSelect(value)
+    let eliminatorSelect = document.getElementById(`eliminator-${index}`)
+    if (eliminatorSelect && value.endsWith('removed')) {
+      ;(eliminatorSelect as HTMLSelectElement).selectedIndex = -1
+    }
+  }
+
   return (
     <Box sx={{ display: 'flex', m: 1 }}>
       <p>{index}.</p>
@@ -21,7 +29,7 @@ function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProp
           Eliminated
         </InputLabel>
         <NativeSelect
-          onChange={(e) => onSelect(e.target.value)}
+          onChange={(e) => handleEliminatedChange(e.target.value, index)}
           inputProps={{
             name: 'Eliminated',
             id: `eliminated-${index}`,
@@ -41,6 +49,7 @@ function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProp
             Eliminator
           </InputLabel>
           <NativeSelect
+            disabled={((document.getElementById(`eliminated-${index}`) as HTMLSelectElement)?.selectedIndex || -1) < 0}
             onChange={(e) => onSelect(e.target.value)}
             inputProps={{
               name: 'Eliminator',

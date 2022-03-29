@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
 import { root } from '..'
-import { Box, Button, Card, CardContent, Container, FormControl, InputLabel, NativeSelect, Paper } from '@mui/material'
+import { Box, Button, Card, CardContent, CircularProgress, Container, FormControl, InputLabel, NativeSelect, Paper } from '@mui/material'
 
 function AddRound() {
   const navigate = useNavigate()
@@ -58,17 +58,19 @@ function AddRound() {
       const selected = { position, name }
 
       const eliminator = finishedPositions.find((it) => it.length > 1 && it[1].position === position)
-      const list = [selected]
+      let list = [selected]
       if (eliminator) {
         list.push(eliminator[1])
       }
 
-      console.log({ position, name })
-      if (name !== 'removed') {
-        setFinishedPositions([...finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position), list])
+      console.log('eliminated', { finishedPositions, selected, list })
+      const filtered = finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position)
+      if (name === 'removed') {
+        setFinishedPositions(filtered)
       } else {
-        setFinishedPositions(finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position))
+        setFinishedPositions([...filtered, list])
       }
+      console.log('finishedPositions', { finishedPositions, selected, list, filtered })
     } else if (value.startsWith('eliminator-')) {
       const position = parseInt(value.split('#')[0].split('-')[1])
       const name = value.split('#')[1]
@@ -78,11 +80,10 @@ function AddRound() {
       let list = [selected]
       if (eliminated) {
         list = [eliminated[0], selected]
-        if (name !== 'removed') {
-          setFinishedPositions([...finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position), list])
-        } else {
-          setFinishedPositions(finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position))
+        if (name === 'removed') {
+          list = [eliminated[0]]
         }
+        setFinishedPositions([...finishedPositions.filter((e) => e.length > 0 && e[0].position !== selected.position), list])
       }
 
       console.log({ position, name })
@@ -151,16 +152,6 @@ function AddRound() {
               <div>
                 Person with the most points in season {totalsValues?.season}: <strong>{totalsValues?.totals?.totalPoints[0].name}</strong>
               </div>
-              {[...Array(players)].map((x, i) => (
-                <PlayerSelect
-                  values={availablePlayers.map((it) => ({ position: i + 1, name: it }))}
-                  extraPoints={extraPoints.map((it) => ({ position: i + 1, name: it }))}
-                  onSelect={handleChange}
-                  index={++i}
-                  key={i}
-                />
-              ))}
-
               <Button variant="contained" onClick={() => setPlayers(players + 1)} sx={{ m: 1 }} disabled={players >= 10}>
                 Add Row
               </Button>
@@ -170,6 +161,7 @@ function AddRound() {
 
               <Button
                 variant="contained"
+                color="success"
                 onClick={() => saveRound()}
                 disabled={
                   saving ||
@@ -178,9 +170,23 @@ function AddRound() {
               >
                 Save Round
               </Button>
+              {[...Array(players)].map((x, i) => (
+                <PlayerSelect
+                  values={availablePlayers.map((it) => ({ position: i + 1, name: it }))}
+                  extraPoints={extraPoints.map((it) => ({ position: i + 1, name: it }))}
+                  onSelect={handleChange}
+                  index={++i}
+                  key={i}
+                />
+              ))}
             </CardContent>
           </Card>
         </Container>
+      )}
+      {!autoComplateValues && (
+        <Box>
+          <CircularProgress />
+        </Box>
       )}
     </Paper>
   )
