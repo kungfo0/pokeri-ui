@@ -55,7 +55,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
               {round.finishedPositions.map((it, index) => (
                 <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell padding="none" component="th" scope="row">
-                    {index}
+                    {index + 1}
                   </TableCell>
                   <TableCell padding="none" align="left">
                     {it.eliminatedPlayer}
