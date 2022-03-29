@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import LogOut from './LogOut'
 import Seasons from './Seasons'
-import { CenteredContainer, RightSideContainer } from './styled-components'
+import { CenteredContainer } from './styled-components'
 import AddIcon from '@mui/icons-material/Add'
 import Button from '@mui/material/Button'
-import { Paper } from '@mui/material'
+import { Box, Paper } from '@mui/material'
 import { root } from '..'
 
 function MainPage() {
@@ -35,9 +35,16 @@ function MainPage() {
         </div>
       ) : (
         <Paper sx={{ m: 2, boxShadow: 0 }}>
-          <RightSideContainer>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row-reverse',
+              p: 1,
+              m: 1,
+            }}
+          >
             <LogOut setApiKey={storeApiKey} />
-          </RightSideContainer>
+          </Box>
           <Seasons />
           <Button variant="contained" sx={{ ml: 2, mb: 2 }} onClick={() => navigate(`${root}/add`)}>
             <AddIcon /> Add Round

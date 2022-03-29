@@ -1,6 +1,5 @@
+import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
-import React from 'react'
-import { LogOutButtonContainer } from './styled-components'
 
 interface LogOutProps {
   setApiKey: (apiKey: string) => void
@@ -11,10 +10,10 @@ export default function LogOut({ setApiKey }: LogOutProps) {
     setApiKey('')
   }
   return (
-    <LogOutButtonContainer>
+    <Box>
       <Button variant="contained" onClick={logOut}>
         Logout
       </Button>
-    </LogOutButtonContainer>
+    </Box>
   )
 }
