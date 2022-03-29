@@ -36,8 +36,8 @@ function Totals({ eliminations, gamesPlayed, totalPoints }: TotalsProps) {
         </Table>
       </TableContainer>
 
-      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 500, m: 1, p: 1 }}>
-        <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
+      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 450, m: 1, p: 1 }}>
+        <Table sx={{ width: 420, boxShadow: 0 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: 'bold' }} padding="none" colSpan={2}>
@@ -68,8 +68,8 @@ function Totals({ eliminations, gamesPlayed, totalPoints }: TotalsProps) {
         </Table>
       </TableContainer>
 
-      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 500, m: 1, p: 1 }}>
-        <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
+      <TableContainer component={Paper} sx={{ boxShadow: 0, width: 450, m: 1, p: 1 }}>
+        <Table sx={{ width: 420, boxShadow: 0 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: 'bold' }} padding="none" colSpan={2}>
