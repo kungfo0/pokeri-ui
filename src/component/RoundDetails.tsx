@@ -16,7 +16,7 @@ import { IconButton } from '@mui/material'
 
 function RoundDetails({ round, index }: RoundDetailsProps) {
   return (
-    <Card sx={{ maxWidth: 500, minWidth: 500, m: 2 }}>
+    <Card sx={{ width: 450, m: 2 }}>
       <CardHeader
         sx={{ p: 1 }}
         action={
@@ -31,7 +31,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
       />
       <CardContent>
         <TableContainer component={Paper} sx={{ boxShadow: 0 }}>
-          <Table sx={{ minWidth: 450, boxShadow: 0 }} aria-label="simple table">
+          <Table sx={{ minWidth: 400, boxShadow: 0 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontWeight: 'bold' }} padding="none">

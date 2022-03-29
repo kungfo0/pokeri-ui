@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1700, height: 1200 })
+  await page.setViewportSize({ width: 1600, height: 1200 })
   await page.goto('https://kungfo0.github.io/pokeri-ui/')
 })
 
