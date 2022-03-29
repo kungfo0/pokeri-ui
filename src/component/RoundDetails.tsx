@@ -14,14 +14,17 @@ import Link from '@mui/material/Link'
 import EditIcon from '@mui/icons-material/Edit'
 import { IconButton } from '@mui/material'
 import { root } from '..'
+import { useNavigate } from 'react-router-dom'
 
 function RoundDetails({ round, index }: RoundDetailsProps) {
+  const navigate = useNavigate()
+
   return (
     <Card sx={{ width: 450, m: 2 }}>
       <CardHeader
         sx={{ p: 1 }}
         action={
-          <Link href={`${root}/round/${round.round.id}`}>
+          <Link href={`${root}/round/${round.round.id}`} onClick={() => navigate(`${root}/round/${round.round.id}`)}>
             <IconButton aria-label="settings">
               <EditIcon />
             </IconButton>
