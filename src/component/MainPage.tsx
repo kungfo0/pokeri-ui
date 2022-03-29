@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 import LogOut from './LogOut'
 import Seasons from './Seasons'
 import { CenteredContainer, RightSideContainer } from './styled-components'
-import { FaPlus } from 'react-icons/fa'
+import AddIcon from '@mui/icons-material/Add'
 import Button from '@mui/material/Button'
 import { Paper } from '@mui/material'
 import { root } from '..'
@@ -40,7 +40,7 @@ function MainPage() {
           </RightSideContainer>
           <Seasons />
           <Button variant="contained" sx={{ ml: 2, mb: 2 }} onClick={() => navigate(`${root}/add`)}>
-            <FaPlus /> Add Round
+            <AddIcon /> Add Round
           </Button>
         </Paper>
       )}

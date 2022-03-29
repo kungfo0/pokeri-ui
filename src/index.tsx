@@ -1,18 +1,14 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import * as ReactDOMClient from 'react-dom/client'
 import App from './App'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
-const publicUrl = (process.env.PUBLIC_URL || '')
+const publicUrl = process.env.PUBLIC_URL || ''
 export const root = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+const reactRoot = ReactDOMClient.createRoot(document.getElementById('root') as HTMLElement)
+
+reactRoot.render(<App />)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

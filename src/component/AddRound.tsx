@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from 'react'
 import { getAutoComplateValues, getTotalsForSeason, putRoundData } from '../http'
 import PlayerSelect, { PositionName } from './PlayerSelect'
 import { AutoComplateValuesRoundsForSeasonResponse, PromiseWithCancel, TotalsForSeasonResponse } from '../types'
-import { Container, Card, CardBody, CardHeader, SmallButton, FlexBox } from './styled-components'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Multiselect } from 'multiselect-react-dropdown'
 import { useNavigate } from 'react-router-dom'
 import { root } from '..'
+import { Box, Button, Card, CardContent, Container, Paper } from '@mui/material'
 
 function AddRound() {
   const navigate = useNavigate()
@@ -88,13 +88,15 @@ function AddRound() {
   }
 
   return (
-    <div>
-      <SmallButton onClick={() => navigate(`${root}/`)}>Back</SmallButton>
+    <Paper sx={{ m: 2, boxShadow: 0, mb: 5 }}>
+      <Button variant="contained" sx={{ ml: 2, mb: 2 }} onClick={() => navigate(`${root}/`)}>
+        Back
+      </Button>
       {autoComplateValues && (
         <Container>
-          <Card>
-            <CardHeader>
-              <FlexBox>
+          <Card sx={{ pb: 20 }}>
+            <CardContent>
+              <Box>
                 Add Round Details
                 <Multiselect
                   isObject={false}
@@ -111,11 +113,13 @@ function AddRound() {
                   }}
                 />
                 <DatePicker selected={roundDate} onChange={(date: Date) => setRoundDate(date as Date)} dateFormat="dd.MM.yyyy" />
-              </FlexBox>
-            </CardHeader>
-            <CardBody>
-              <div>Last round winner: <strong>{autoComplateValues.lastRoundWinner}</strong></div>
-              <div>Person with the most points in season { totalsValues?.season }: <strong>{totalsValues?.totals?.totalPoints[0].name}</strong></div>
+              </Box>
+              <div>
+                Last round winner: <strong>{autoComplateValues.lastRoundWinner}</strong>
+              </div>
+              <div>
+                Person with the most points in season {totalsValues?.season}: <strong>{totalsValues?.totals?.totalPoints[0].name}</strong>
+              </div>
               {[...Array(players)].map((x, i) => (
                 <PlayerSelect
                   values={availablePlayers.map((it) => ({ position: i + 1, name: it }))}
@@ -130,18 +134,26 @@ function AddRound() {
                 />
               ))}
 
-              {players < 10 && <SmallButton onClick={() => setPlayers(players + 1)}>Add</SmallButton>}
-              {players > 1 && <SmallButton onClick={() => setPlayers(players - 1)}>Remove</SmallButton>}
-              {players > 1 && players < 11 && finishedPositions.length === players && finishedPositions.filter((it) => it.length > 0 && it[0].position !== 1).every((it) => it.length === 2) && (
-                <SmallButton onClick={() => saveRound()} disabled={saving}>
-                  Save
-                </SmallButton>
+              {players < 10 && (
+                <Button variant="contained" onClick={() => setPlayers(players + 1)} sx={{ m: 1 }}>
+                  Add
+                </Button>
               )}
-            </CardBody>
+              {players > 1 && (
+                <Button variant="contained" onClick={() => setPlayers(players - 1)} sx={{ mr: 1 }}>
+                  Remove
+                </Button>
+              )}
+              {players > 1 && players < 11 && finishedPositions.length === players && finishedPositions.filter((it) => it.length > 0 && it[0].position !== 1).every((it) => it.length === 2) && (
+                <Button variant="contained" onClick={() => saveRound()} disabled={saving}>
+                  Save
+                </Button>
+              )}
+            </CardContent>
           </Card>
         </Container>
       )}
-    </div>
+    </Paper>
   )
 }
 

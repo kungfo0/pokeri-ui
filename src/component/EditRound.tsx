@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { deleteRound, getRound } from '../http'
 import { PromiseWithCancel, RoundDetails } from '../types'
-import { SmallButton, Spinner, StyledTable } from './styled-components'
-import { FaTrash } from 'react-icons/fa'
+import { Spinner } from './styled-components'
+import DeleteIcon from '@mui/icons-material/Delete'
 import { root } from '..'
+import { CardContent, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material'
 
 function EditRound() {
   const navigate = useNavigate()
@@ -34,47 +35,66 @@ function EditRound() {
   }, [id])
 
   return (
-    <>
-      <SmallButton onClick={() => navigate(`${root}/`)}>Back</SmallButton>
+    <Paper sx={{ m: 2, boxShadow: 0, mb: 5 }}>
+      <Button variant="contained" onClick={() => navigate(`${root}/`)}>
+        Back
+      </Button>
       {round ? (
         <>
-          <StyledTable>
-            <thead>
-              <tr>
-                <th colSpan={5}>Round - {new Date(round.round.date).toLocaleDateString('fi-FI', { year: 'numeric', month: 'numeric', day: 'numeric' })}</th>
-              </tr>
-              <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Eliminator</th>
-                <th>Points</th>
-                <th>Extra</th>
-              </tr>
-            </thead>
-            <tbody>
-              {round.finishedPositions
-                .sort((a, b) => (a.finishedPosition < b.finishedPosition ? -1 : 1))
-                .map(function (it) {
-                  return (
-                    <tr key={it.finishedPosition}>
-                      <td>{it.finishedPosition}</td>
-                      <td>{it.eliminatedPlayer}</td>
-                      <td>{it.eliminator}</td>
-                      <td>{it.points}</td>
-                      <td>{it?.extrapoint}</td>
-                    </tr>
-                  )
-                })}
-            </tbody>
-          </StyledTable>
-          <SmallButton onClick={() => (window.confirm('Delete round?') ? delRound() : '')} disabled={deleting}>
-            <FaTrash /> Delete
-          </SmallButton>
+          <CardContent>
+            <TableContainer component={Paper} sx={{ boxShadow: 0 }}>
+              <Table sx={{ minWidth: 400, boxShadow: 0 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: 'bold' }} padding="none">
+                      Rank
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                      Player
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="left">
+                      Eliminator
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="right">
+                      Points
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }} padding="none" align="right">
+                      Extra
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {round.finishedPositions.map((it, index) => (
+                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                      <TableCell padding="none" component="th" scope="row">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell padding="none" align="left">
+                        {it.eliminatedPlayer}
+                      </TableCell>
+                      <TableCell padding="none" align="left">
+                        {it.eliminator}
+                      </TableCell>
+                      <TableCell padding="none" align="right">
+                        {it.points}
+                      </TableCell>
+                      <TableCell padding="none" align="right">
+                        {it?.extrapoint}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </CardContent>
+          <Button variant="contained" onClick={() => (window.confirm('Delete round?') ? delRound() : '')} disabled={deleting}>
+            <DeleteIcon /> Delete
+          </Button>
         </>
       ) : (
         <Spinner />
       )}
-    </>
+    </Paper>
   )
 }
 

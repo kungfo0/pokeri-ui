@@ -1,5 +1,4 @@
-import React from 'react'
-import { SelectContainer } from './styled-components'
+import { Box } from '@mui/material'
 import { Multiselect } from 'multiselect-react-dropdown'
 
 export interface PositionName {
@@ -20,7 +19,7 @@ type PlayerSelectProps = Readonly<{
 
 function PlayerSelect({ values, extraPoints, selectionLimit, index, onSelect, onRemove, onBountySelect, onBountyRemove }: PlayerSelectProps) {
   return (
-    <SelectContainer>
+    <Box sx={{ display: 'flex', m: 1 }}>
       <p>{index}.</p>
       <Multiselect
         key={index}
@@ -36,7 +35,7 @@ function PlayerSelect({ values, extraPoints, selectionLimit, index, onSelect, on
         selectionLimit={selectionLimit}
         style={{
           multiselectContainer: {
-            width: '70%',
+            width: '500px',
           },
         }}
       />
@@ -58,7 +57,7 @@ function PlayerSelect({ values, extraPoints, selectionLimit, index, onSelect, on
           },
         }}
       />
-    </SelectContainer>
+    </Box>
   )
 }
 
