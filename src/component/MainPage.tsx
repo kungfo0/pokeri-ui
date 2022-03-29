@@ -7,6 +7,7 @@ import { CenteredContainer, RightSideContainer } from './styled-components'
 import { FaPlus } from 'react-icons/fa'
 import Button from '@mui/material/Button'
 import { Paper } from '@mui/material'
+import { root } from '..'
 
 function MainPage() {
   const navigate = useNavigate()
@@ -38,7 +39,7 @@ function MainPage() {
             <LogOut setApiKey={storeApiKey} />
           </RightSideContainer>
           <Seasons />
-          <Button variant="contained" sx={{ ml: 2, mb: 2 }} onClick={() => navigate('/add')}>
+          <Button variant="contained" sx={{ ml: 2, mb: 2 }} onClick={() => navigate(`${root}/add`)}>
             <FaPlus /> Add Round
           </Button>
         </Paper>

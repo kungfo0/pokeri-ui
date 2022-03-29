@@ -13,6 +13,7 @@ import Paper from '@mui/material/Paper'
 import Link from '@mui/material/Link'
 import EditIcon from '@mui/icons-material/Edit'
 import { IconButton } from '@mui/material'
+import { root } from '..'
 
 function RoundDetails({ round, index }: RoundDetailsProps) {
   return (
@@ -20,7 +21,7 @@ function RoundDetails({ round, index }: RoundDetailsProps) {
       <CardHeader
         sx={{ p: 1 }}
         action={
-          <Link href={`round/${round.round.id}`}>
+          <Link href={`${root}/round/${round.round.id}`}>
             <IconButton aria-label="settings">
               <EditIcon />
             </IconButton>
