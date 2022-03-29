@@ -17,7 +17,7 @@ function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProp
     <Box sx={{ display: 'flex', m: 1 }}>
       <p>{index}.</p>
       <FormControl fullWidth sx={{ m: 1 }}>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+        <InputLabel variant="standard" htmlFor={`eliminated-${index}`}>
           Eliminated
         </InputLabel>
         <NativeSelect
@@ -37,7 +37,7 @@ function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProp
       </FormControl>
       {index > 1 && (
         <FormControl fullWidth sx={{ m: 1 }}>
-          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          <InputLabel variant="standard" htmlFor={`eliminator-${index}`}>
             Eliminator
           </InputLabel>
           <NativeSelect
@@ -57,7 +57,7 @@ function PlayerSelect({ values, extraPoints, index, onSelect }: PlayerSelectProp
         </FormControl>
       )}
       <FormControl fullWidth sx={{ m: 1 }}>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+        <InputLabel variant="standard" htmlFor={`bounty-${index}`}>
           Bounty
         </InputLabel>
         <NativeSelect
