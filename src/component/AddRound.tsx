@@ -150,8 +150,8 @@ function AddRound() {
                 Last round winner: <strong>{autoComplateValues.lastRoundWinner}</strong>
               </div>
               <div>
-                Person with the most points in season {totalsValues?.season}:{' '}
-                <strong>{totalsValues?.totals?.totalPoints.length || 0 > 0 ? totalsValues?.totals?.totalPoints[0].name : 'No one'}</strong>
+                Person with the most points in season {totalsValues?.season}:
+                <strong>{(totalsValues?.totals?.totalPoints.length || 0) > 0 ? totalsValues?.totals?.totalPoints[0].name : 'No one'}</strong>
               </div>
               <Button variant="contained" onClick={() => setPlayers(players + 1)} sx={{ m: 1 }} disabled={players >= 10}>
                 Add Row
