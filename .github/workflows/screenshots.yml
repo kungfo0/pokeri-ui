@@ -1,10 +1,10 @@
 name: Take screenshots
 
 on:
+  workflow_dispatch:
   repository_dispatch:
     types:
       - webhook
-      - workflow_dispatch 
 
 jobs:
   test:
